@@ -76,7 +76,7 @@ public class MainController {
         paramAnswer.clear();
         anchor2dPane.getChildren().clear();
         Pane3d.getChildren().clear();
-        minV.setText("Min значение объема фильрата: ");
+        minV.setText("Min значение объема фильтрата: ");
         minOut.setText("Min значение расхода: ");
     }
 
@@ -195,9 +195,9 @@ public class MainController {
             Pane3d.getChildren().add(imageView);
         } catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Bad format in cell.");
-            alert.setContentText("Check all cells!\n");
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Неправильный формат чисел");
+            alert.setContentText("Проверьте все ячейки на наличие ошибок!\n");
             alert.showAndWait();
 
             xMinField.clear();
@@ -228,7 +228,7 @@ public class MainController {
                         System.out.println("V = " + minimumV);
                         rashod = minimumV * 8 * 10;
                         System.out.println("Rashod = " + String.format("%.1f",rashod));
-                        minV.setText("Min значение объема фильрата: " + String.format("%.3f", minimumV));
+                        minV.setText("Min значение объема фильтрата: " + String.format("%.3f", minimumV));
                         minOut.setText("Min значение расхода: "+ String.format("%.1f",rashod));
                     }
                 }
