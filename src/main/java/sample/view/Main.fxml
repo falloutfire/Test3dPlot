@@ -26,7 +26,7 @@
                   <TextField fx:id="paramAnswer" layoutX="182.0" layoutY="130.0" prefHeight="25.0" prefWidth="40.0" />
                   <TextField fx:id="scanField" layoutX="123.0" layoutY="165.0" prefHeight="25.0" prefWidth="46.0" />
                   <Label layoutX="13.0" layoutY="169.0" text="Шаг сканирования" />
-                  <Button layoutX="168.0" layoutY="459.0" mnemonicParsing="false" onAction="#onCllickStart" prefHeight="25.0" prefWidth="87.0" text="Запуск" />
+                  <Button layoutX="168.0" layoutY="459.0" mnemonicParsing="false" onAction="#onClickStart" prefHeight="25.0" prefWidth="87.0" text="Запуск" />
                   <Label layoutX="63.0" layoutY="134.0" text="*X + " />
                   <Label layoutX="146.0" layoutY="134.0" text="*Y &lt;=" />
                   <Label fx:id="minOut" layoutX="11.0" layoutY="232.0" prefHeight="8.0" prefWidth="194.0" text="Min значение расхода:  " />

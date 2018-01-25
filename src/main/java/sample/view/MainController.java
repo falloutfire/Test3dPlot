@@ -113,27 +113,7 @@ public class MainController {
         return chart;
     }
 
-    public TextField getxMinField() {
-        return xMinField;
-    }
-
-    public TextField getxMaxField() {
-        return xMaxField;
-    }
-
-    public TextField getyMinField() {
-        return yMinField;
-    }
-
-    public TextField getyMaxField() {
-        return yMaxField;
-    }
-
-    public TextField getScanField() {
-        return scanField;
-    }
-
-    public void onCllickStart(ActionEvent actionEvent) {
+    public void onClickStart(ActionEvent actionEvent) {
 
         try {
             int xMin = Integer.parseInt(xMinField.getText());
@@ -217,7 +197,7 @@ public class MainController {
         //перебор, scan - шаг
         for(double i = xMin; i < xMax; i=i+scan){
             for(double a = yMin; a < yMax; a=a+scan){
-                if(0.5 * i + a <= 1){
+                if (Double.parseDouble(paramX.getText()) * i + Double.parseDouble(paramY.getText()) * a <= Double.parseDouble(paramAnswer.getText())) {
                     v = Math.pow((i*i +a - 11), 2)+ Math.pow((i+a*a-7), 2);
                     if(minimumV >v){
                         minimumV = v;
