@@ -4,8 +4,6 @@
     <list default="true" id="ec230f98-3397-432b-84dc-2d9f4f7b84d1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sample/view/MainController.class" afterPath="$PROJECT_DIR$/target/classes/sample/view/MainController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sample/view/Main.fxml" afterPath="$PROJECT_DIR$/src/main/java/sample/view/Main.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sample/view/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/sample/view/MainController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sample/view/Main.fxml" afterPath="$PROJECT_DIR$/target/classes/sample/view/Main.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -391,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516834390367</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixies">
+      <created>1516845850773</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1516845850773</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
