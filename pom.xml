@@ -19,6 +19,22 @@
             <artifactId>jzy3d-javafx</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/jfree/jfreechart -->
+        <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart-fx</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.knowm.xchart</groupId>
+            <artifactId>xchart</artifactId>
+            <version>3.5.0</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -40,9 +56,21 @@
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.fxml</include>
+                    <include>**/*.css</include>
+                    <include>**/*.png</include>
                 </includes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

@@ -1,5 +1,6 @@
 package sample.view;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -8,13 +9,17 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.jzy3d.chart.AWTChart;
 import org.jzy3d.colors.Color;
 import org.jzy3d.colors.ColorMapper;
 import org.jzy3d.colors.colormaps.ColorMapRainbow;
+import org.jzy3d.contour.DefaultContourColoringPolicy;
+import org.jzy3d.contour.MapperContourPictureGenerator;
 import org.jzy3d.javafx.JavaFXChartFactory;
+import org.jzy3d.maths.Coord3d;
 import org.jzy3d.maths.Range;
 import org.jzy3d.plot3d.builder.Builder;
 import org.jzy3d.plot3d.builder.Mapper;
@@ -22,8 +27,14 @@ import org.jzy3d.plot3d.builder.concrete.OrthonormalGrid;
 import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class MainController {
 
+    public ImageView img2d;
     @FXML
     private Label minOut;
     @FXML
@@ -39,7 +50,6 @@ public class MainController {
     @FXML
     private AnchorPane anchor2dPane;
 
-    private LineChart<Number,Number> chart2dLine;
     private NumberAxis xAxis = new NumberAxis();
     private NumberAxis yAxis = new NumberAxis();
 
@@ -58,14 +68,18 @@ public class MainController {
     private JavaFXChartFactory factory;
     private AWTChart chart;
 
+    private ImageView imageView2d;
+    private JavaFXChartFactory factory2d;
+    private AWTChart chart2dtest;
+
     public MainController() {
     }
 
-    public void initialize(){
+    public void initialize() {
 
     }
 
-    public void clearFields(){
+    public void clearFields() {
         scanField.clear();
         xMaxField.clear();
         xMinField.clear();
@@ -80,19 +94,19 @@ public class MainController {
         minOut.setText("Min значение расхода: ");
     }
 
-    private AWTChart getDemoChart(JavaFXChartFactory factory, String toolkit, int xMin, int xMax, int yMin, int yMax) {
+    private AWTChart getDemoChart(JavaFXChartFactory factory, String toolkit, double xMin, double xMax, double yMin, double yMax) {
         // -------------------------------
         // Define a function to plot
         Mapper mapper = new Mapper() {
             @Override
             public double f(double x, double y) {
-                return Math.pow(x*x+y-11,2)+Math.pow(x+y*y-7,2) ;
+                return Math.pow(x * x + y - 11, 2) + Math.pow(x + y * y - 7, 2);
             }
         };
 
         // Define range and precision for the function to plot
-        Range rangeX = new Range(xMin, xMax);
-        Range rangeY = new Range(yMin, yMax);
+        Range rangeX = new Range((float) xMin, (float) xMax);
+        Range rangeY = new Range((float) yMin, (float) yMax);
         int steps = 80;
 
         // Create the object to represent the function over the given range.
@@ -110,23 +124,89 @@ public class MainController {
         // let factory bind mouse and keyboard controllers to JavaFX node
         AWTChart chart = (AWTChart) factory.newChart(quality, toolkit);
         chart.getScene().getGraph().add(surface);
+
         return chart;
     }
 
-    public void onClickStart(ActionEvent actionEvent) {
+    private BufferedImage get2dChart(double xMin, double xMax, double yMin, double yMax) {
+        Mapper mapper = new Mapper() {
+            @Override
+            public double f(double x, double y) {
+                return Math.pow(x * x + y - 11, 2) + Math.pow(x + y * y - 7, 2);
+            }
+        };
+
+        Range xrange = new Range((float) xMin , (float) xMax );
+        Range yrange = new Range((float) yMin , (float) yMax );
+        int steps = 100;
+
+        // Create the object to represent the function over the given range.
+        final Shape surface = (Shape) Builder.buildOrthonormal(new OrthonormalGrid(xrange, steps, yrange, steps), mapper);
+        ColorMapper myColorMapper = new ColorMapper(new ColorMapRainbow(), surface.getBounds().getZmin(), surface.getBounds().getZmax(), new Color(1, 1, 1, .5f));
+        surface.setColorMapper(myColorMapper);
+        surface.setFaceDisplayed(true);
+        surface.setWireframeDisplayed(true);
+        surface.setWireframeColor(Color.BLACK);
+
+        MapperContourPictureGenerator contour = new MapperContourPictureGenerator(mapper, xrange, yrange);
+
+        BufferedImage bufferedImage = contour.getFilledContourImage(new DefaultContourColoringPolicy(myColorMapper), 400, 400, 30);
+
+        return bufferedImage;
+    }
+
+    private AWTChart getChart2d(JavaFXChartFactory factory, String toolkit, double xMin, double xMax, double yMin, double yMax) {
+
+        Mapper mapper = new Mapper() {
+            @Override
+            public double f(double x, double y) {
+                return Math.pow(x * x + y - 11, 2) + Math.pow(x + y * y - 7, 2);
+            }
+        };
+
+        // Define range and precision for the function to plot
+        Range xrange = new Range((float) xMin, (float) xMax);
+        Range yrange = new Range((float) yMin, (float) yMax);
+        int steps = 80;
+
+        // Create the object to represent the function over the given range.
+        final Shape surface = Builder.buildOrthonormal(new OrthonormalGrid(xrange, steps, yrange, steps), mapper);
+        surface.setColorMapper(new ColorMapper(new ColorMapRainbow(), surface.getBounds().getZmin(), surface.getBounds().getZmax(), new Color(1, 1, 1, .5f)));
+        surface.setFaceDisplayed(true);
+        surface.setWireframeDisplayed(false);
+
+        Quality quality = Quality.Advanced;
+
+        AWTChart chart = (AWTChart) factory.newChart(quality, toolkit);
+        chart.getScene().getGraph().add(surface);
+        chart.getView().getCamera().setScreenGridDisplayed(true);
+        chart.getAWTView().setViewPoint(new Coord3d(0, 10, 0), true);
+        return chart;
+    }
+
+
+    public void onClickStart(ActionEvent actionEvent) throws IOException {
 
         try {
-            int xMin = Integer.parseInt(xMinField.getText());
-            int xMax = Integer.parseInt(xMaxField.getText());
-            int yMin = Integer.parseInt(yMinField.getText());
-            int yMax = Integer.parseInt(yMaxField.getText());
+            double xMin = Double.parseDouble(xMinField.getText());
+            double xMax = Double.parseDouble(xMaxField.getText());
+            double yMin = Double.parseDouble(yMinField.getText());
+            double yMax = Double.parseDouble(yMaxField.getText());
+            double scan = Double.parseDouble(scanField.getText());
+            double parX = Double.parseDouble(paramX.getText());
+            double parY = Double.parseDouble(paramY.getText());
+            double parAns = Double.parseDouble(paramAnswer.getText());
             factory = new JavaFXChartFactory();
             chart = getDemoChart(factory, "offscreen", xMin, xMax, yMin, yMax);
             imageView = factory.bindImageView(chart);
 
+            BufferedImage bufferedImage = get2dChart(xMin, xMax, yMin, yMax);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView2d = new ImageView(image);
+
             anchor2dPane.getChildren().removeAll();
             Pane3d.getChildren().removeAll();
-            chart2dLine = new LineChart<Number, Number>(xAxis, yAxis);
+            LineChart<Number, Number> chart2dLine = new LineChart<Number, Number>(xAxis, yAxis);
 
             XYChart.Series series1 = new XYChart.Series();
             XYChart.Series series2 = new XYChart.Series();
@@ -147,21 +227,12 @@ public class MainController {
             series4.getData().add(new XYChart.Data(xMin, yMax));
             series4.getData().add(new XYChart.Data(xMax, yMax));
 
-            for (int a = yMax; a > yMin; a--) {
-                if (Double.parseDouble(paramX.getText()) * xMin + Double.parseDouble(paramY.getText()) * a <= Double.parseDouble(paramAnswer.getText())) {
-                    series5.getData().add(new XYChart.Data<Number, Number>(xMin, a));
-                    break;
-                }
-            }
+            CalculateGraph2d calc2d = new CalculateGraph2d(xMin, xMax, yMin, yMax, parX, parY, parAns, scan);
+            series5.getData().add(calc2d.getCalculateX());
+            series5.getData().add(calc2d.getCalculateY());
 
-            for (int a = yMax; a > yMin; a--) {
-                if (Double.parseDouble(paramX.getText()) * xMax + Double.parseDouble(paramY.getText()) * a <= Double.parseDouble(paramAnswer.getText())) {
-                    series5.getData().add(new XYChart.Data<Number, Number>(xMax, a));
-                    break;
-                }
-            }
-
-            double[] optXY = optim(xMin, xMax, yMin, xMax, Double.valueOf(scanField.getText()));
+            double[] optXY = new double[2];
+            optXY = optim(xMin, xMax, yMin, yMax, scan, parX, parY, parAns);
             seriesAnswer.getData().add(new XYChart.Data<Number, Number>(optXY[0], optXY[1]));
 
             chart2dLine.getData().add(series1);
@@ -171,45 +242,66 @@ public class MainController {
             chart2dLine.getData().add(series5);
             chart2dLine.getData().add(seriesAnswer);
             chart2dLine.setLegendVisible(false);
+            chart2dLine.setMaxWidth(400);
+
+            final String resourceF = getClass().getResource("back.png").toExternalForm();
+            File f = new File(resourceF.substring(6));
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "PNG", f);
+
+            final String resourceCss = getClass().getResource("StylePlot.css").toExternalForm();
+            chart2dLine.getStylesheets().add(resourceCss);
+
+            anchor2dPane.getChildren().add(imageView2d);
+            imageView2d.setX(36);
+            imageView2d.setY(16);
+            imageView2d.setFitHeight(345);
+            imageView2d.setFitWidth(350);
+
+            chart2dLine.setAlternativeRowFillVisible(false);
+            chart2dLine.setAlternativeColumnFillVisible(false);
+
+            //chart2dLine.setLayoutX(5);
+            //chart2dLine.setLayoutY(5);
+            chart2dLine.setMaxSize(400, 400);
+            chart2dLine.setMinSize(400, 400);
+
             anchor2dPane.getChildren().add(chart2dLine);
+
             Pane3d.getChildren().add(imageView);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
             alert.setHeaderText("Неправильный формат чисел");
             alert.setContentText("Проверьте все ячейки на наличие ошибок!\n");
             alert.showAndWait();
-
-            xMinField.clear();
-            xMaxField.clear();
-            yMaxField.clear();
-            yMinField.clear();
-            scanField.clear();
-
         }
     }
 
-    public double[] optim(int xMin, int xMax, int yMin, int yMax, double scan){
+    public double[] optim(double xMin, double xMax, double yMin, double yMax, double scan, double parX, double parY, double parAns) {
         double v, rashod;
-        double[] optXY = {0, 0};
+        double[] optXY = new double[2];
         //функция, вычисляется первое значение для сравнения с поледующими для нахождения минимума
-        double minimumV = Math.rint(Math.pow((xMax -yMax - 11), 2)+ Math.pow((xMax+yMax-7), 2));
+        double minimumV = Math.pow((xMax * xMax + yMax - 11), 2) + Math.pow((xMax + yMax * yMax - 7), 2);
+        System.out.println("T1 = " + xMax);
+        System.out.println("T2 = " + yMax);
+        System.out.println("V = " + minimumV);
+        System.out.println();
         //перебор, scan - шаг
-        for(double i = xMin; i < xMax; i=i+scan){
-            for(double a = yMin; a < yMax; a=a+scan){
-                if (Double.parseDouble(paramX.getText()) * i + Double.parseDouble(paramY.getText()) * a <= Double.parseDouble(paramAnswer.getText())) {
-                    v = Math.pow((i*i +a - 11), 2)+ Math.pow((i+a*a-7), 2);
-                    if(minimumV >v){
+        for (double i = xMin; i <= xMax; i = i + scan) {
+            for (double a = yMax; a >= yMin; a = a - scan) {
+                if (parX * i + parY * a < parAns) {
+                    v = Math.pow((i * i + a - 11), 2) + Math.pow((i + a * a - 7), 2);
+                    if (minimumV >= v) {
                         minimumV = v;
-                        optXY[0]=i;
-                        optXY[1]=a;
+                        optXY[0] = i;
+                        optXY[1] = a;
                         System.out.println("T1 = " + i);
                         System.out.println("T2 = " + a);
                         System.out.println("V = " + minimumV);
                         rashod = minimumV * 8 * 10;
-                        System.out.println("Rashod = " + String.format("%.1f",rashod));
+                        System.out.println("Rashod = " + String.format("%.1f", rashod));
                         minV.setText("Min значение объема фильтрата: " + String.format("%.3f", minimumV));
-                        minOut.setText("Min значение расхода: "+ String.format("%.1f",rashod));
+                        minOut.setText("Min значение расхода: " + String.format("%.1f", rashod));
                     }
                 }
             }
