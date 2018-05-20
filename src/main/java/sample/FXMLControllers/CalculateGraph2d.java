@@ -1,4 +1,4 @@
-package sample.view;
+package sample.FXMLControllers;
 
 import javafx.scene.chart.XYChart;
 
@@ -6,6 +6,7 @@ public class CalculateGraph2d {
 
     private double xMin, xMax, yMin, yMax, paramX, paramY, paramAnswer, scan;
     private XYChart.Data<Number, Number> calculateX, calculateY;
+    XYChart.Series<Number, Number> outArea = new XYChart.Series<>();
 
     public CalculateGraph2d(double xMin, double xMax, double yMin, double yMax, double paramX, double paramY, double paramAnswer, double scan) {
         this.xMin = xMin;
@@ -18,6 +19,7 @@ public class CalculateGraph2d {
         this.scan = scan;
         calcX();
         calcY();
+        outArea();
     }
 
     private void calcX(){
@@ -62,11 +64,28 @@ public class CalculateGraph2d {
         }
     }
 
+    public void outArea(){
+        for(double x = xMin; x <= xMax; x = x + scan){
+            outArea.getData().add(new XYChart.Data<>(x, yMax));
+            for (double y = yMin; y <= yMax; y = y + scan){
+                if(paramX*x+paramY*y>=paramAnswer){
+                    outArea.getData().add(new XYChart.Data<>(x,y));
+                    break;
+                }
+            }
+        }
+        outArea.getData().add(new XYChart.Data<>(xMax, yMax));
+    }
+
     public XYChart.Data<Number, Number> getCalculateX() {
         return calculateX;
     }
 
     public XYChart.Data<Number, Number> getCalculateY() {
         return calculateY;
+    }
+
+    public XYChart.Series getOutArea() {
+        return outArea;
     }
 }

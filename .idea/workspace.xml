@@ -2,63 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec230f98-3397-432b-84dc-2d9f4f7b84d1" name="Default" comment="fixies">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_erichseifert_vectorgraphics2d_VectorGraphics2D_0_11.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jfree_jcommon_1_0_16.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jfree_jfreechart_1_0_13.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfree_fxgraphics2d_1_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfree_jfreechart_1_5_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfree_jfreechart_fx_1_0_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_knowm_xchart_xchart_3_5_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sample/view/CalculateGraph2d.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_miglayout_miglayout_3_7_4.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_3.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_16.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_opencsv_opencsv_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_jmatio_jmatio_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_main_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_android_aarch64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_android_armv6_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_linux_amd64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_linux_armv6_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_linux_armv6hf_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_linux_i586_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_macosx_universal_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_solaris_amd64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_solaris_i586_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_windows_amd64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_gluegen_gluegen_rt_natives_windows_i586_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_main_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_android_aarch64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_android_armv6_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_linux_amd64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_linux_armv6_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_linux_armv6hf_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_linux_i586_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_macosx_universal_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_solaris_amd64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_solaris_i586_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_windows_amd64_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jogamp_jogl_jogl_all_natives_windows_i586_2_3_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jzy3d_jzy3d_api_1_0_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jzy3d_jzy3d_javafx_1_0_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jzy3d_jzy3d_jdt_core_1_0_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_smurn_jply_0_2_1.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Test3dPlot.iml" afterPath="$PROJECT_DIR$/Test3dPlot.iml" />
       <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/Main.fxml" afterPath="$PROJECT_DIR$/src/main/java/sample/view/Main.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/sample/view/MainController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Main.java" afterPath="$PROJECT_DIR$/src/main/java/sample/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/CalculateGraph2d.java" afterPath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/CalculateGraph2d.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/Main.fxml" afterPath="$PROJECT_DIR$/src/main/java/sample/View/Main.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/MainController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/RootLayout.fxml" afterPath="$PROJECT_DIR$/src/main/java/sample/View/RootLayout.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/RootLayoutController.java" afterPath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/RootLayoutController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/StylePlot.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/view/back.png" afterPath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/back.png" />
       <change beforePath="$PROJECT_DIR$/target/classes/sample/Main.class" afterPath="$PROJECT_DIR$/target/classes/sample/Main.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/sample/view/Main.fxml" afterPath="$PROJECT_DIR$/target/classes/sample/view/Main.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/MainController$1.class" afterPath="$PROJECT_DIR$/target/classes/sample/view/MainController$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/MainController.class" afterPath="$PROJECT_DIR$/target/classes/sample/view/MainController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/RootLayoutController.class" afterPath="$PROJECT_DIR$/target/classes/sample/view/RootLayoutController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/MainController$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/MainController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/RootLayout.fxml" afterPath="$PROJECT_DIR$/target/classes/sample/view/RootLayout.fxml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/RootLayoutController.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -69,53 +31,53 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Test3dPlot$Main.coverage" NAME="Main Coverage Results" MODIFIED="1526148958469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>sample.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="57" column="44" lean-forward="false" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+            <state relative-caret-position="-338">
+              <caret line="255" column="26" lean-forward="false" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1904#1905#0" expanded="true" />
-                <element signature="e#1941#1942#0" expanded="true" />
+                <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
+                <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
+                <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
+                <element signature="method#optim#0;class#MainController#0" expanded="false" />
+                <element signature="method#getAlert#0;class#MainController#0" expanded="false" />
+                <element signature="method#isTrueArea#0;class#MainController#0" expanded="false" />
+                <element signature="method#addingsArrays#0;class#MainController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/Main.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
+      <file leaf-file-name="RootLayoutController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/RootLayoutController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+            <state relative-caret-position="0">
+              <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/MainController.java">
+      <file leaf-file-name="CalculateGraph2d.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/CalculateGraph2d.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="184" column="5" lean-forward="true" selection-start-line="157" selection-start-column="4" selection-end-line="184" selection-end-column="5" />
+            <state relative-caret-position="1292">
+              <caret line="76" column="53" lean-forward="false" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
-                <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
-                <element signature="e#2790#2981#0" expanded="true" />
-                <element signature="e#2980#2981#0" expanded="true" />
-                <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
-                <element signature="e#4168#4359#0" expanded="true" />
-                <element signature="e#4358#4359#0" expanded="true" />
-                <element signature="method#getChart2d#0;class#MainController#0" expanded="false" />
-                <element signature="e#5493#5684#0" expanded="true" />
-                <element signature="e#5683#5684#0" expanded="true" />
-                <element signature="e#7838#7854#0" expanded="true" />
+                <element signature="e#2519#2520#0" expanded="true" />
+                <element signature="e#2552#2553#0" expanded="true" />
+                <element signature="e#2611#2612#0" expanded="true" />
+                <element signature="e#2644#2645#0" expanded="true" />
+                <element signature="e#2686#2687#0" expanded="true" />
+                <element signature="e#2716#2717#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,18 +86,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StylePlot.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/StylePlot.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="48" />
+            <state relative-caret-position="1054">
+              <caret line="62" column="20" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="62" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -156,10 +108,12 @@
       <find>chart</find>
       <find>factory</find>
       <find>squa</find>
+      <find>Double</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
@@ -180,7 +134,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/sample/view/RootLayout.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/view/RootLayoutController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/FilledContoursDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Factories/IJzyFactory.java" />
@@ -206,6 +159,11 @@
         <option value="$PROJECT_DIR$/src/main/java/sample/view/CalculateGraph2d.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/view/StylePlot.css" />
         <option value="$PROJECT_DIR$/src/main/java/sample/view/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/View/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/AreaStyle.css" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/CalculateGraph2d.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java" />
       </list>
     </option>
   </component>
@@ -232,8 +190,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="697" />
+    <option name="x" value="673" />
+    <option name="width" value="700" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -252,8 +210,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -294,7 +251,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="FXMLControllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Test3dPlot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Test3dPlot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Test3dPlot" type="b2602c69:ProjectViewProjectNode" />
@@ -326,8 +292,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,20 +308,20 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\projects\Test3dPlot\src\main\java\sample" />
-      <recent name="F:\projects\Test3dPlot\src\main\java\sample\Factories" />
-      <recent name="F:\projects\Test3dPlot\src\main\java\sample\view" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="sample.view" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\projects\Test3dPlot\src\main\java\sample\FXMLControllers" />
       <recent name="F:\projects\Test3dPlot\src\main\java\sample\view" />
       <recent name="F:\projects\Test3dPlot\src\main\java\sample\local-maven-repo" />
       <recent name="F:\projects\Test3dPlot\src\main\resources" />
       <recent name="F:\projects\Test3dPlot\src\main\java\sample\masterJzy3d" />
-      <recent name="F:\projects\Test3dPlot\target\classes" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sample.view" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\projects\Test3dPlot\src\main\java\sample" />
+      <recent name="F:\projects\Test3dPlot\src\main\java\sample\Factories" />
+      <recent name="F:\projects\Test3dPlot\src\main\java\sample\view" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -579,6 +546,18 @@
       <workItem from="1520159718183" duration="13961000" />
       <workItem from="1520183561832" duration="11021000" />
       <workItem from="1520238252330" duration="3074000" />
+      <workItem from="1524826335070" duration="3882000" />
+      <workItem from="1525085057712" duration="148000" />
+      <workItem from="1525690655618" duration="1885000" />
+      <workItem from="1525790619626" duration="1943000" />
+      <workItem from="1525882751427" duration="1912000" />
+      <workItem from="1525898672107" duration="858000" />
+      <workItem from="1525949017611" duration="4996000" />
+      <workItem from="1526035613765" duration="602000" />
+      <workItem from="1526042576083" duration="2301000" />
+      <workItem from="1526119374897" duration="6052000" />
+      <workItem from="1526147777874" duration="7940000" />
+      <workItem from="1526809617997" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="fixies">
       <created>1516834390367</created>
@@ -612,7 +591,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30839000" />
+    <option name="totallyTimeSpent" value="64367000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -625,35 +604,35 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.295764" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14750378" sideWeight="0.49115044" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25657895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25657895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24835527" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25416037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2624811" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14750378" sideWeight="0.50884956" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -698,6 +677,32 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -706,11 +711,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="fixies" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayout.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/RootLayout.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -721,80 +728,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/Main.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="25" lean-forward="true" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
-            <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#2790#2981#0" expanded="true" />
-            <element signature="e#2980#2981#0" expanded="true" />
-            <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#4168#4359#0" expanded="true" />
-            <element signature="e#4358#4359#0" expanded="true" />
-            <element signature="method#getChart2d#0;class#MainController#0" expanded="false" />
-            <element signature="e#5493#5684#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#7838#7854#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="12" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="16" lean-forward="false" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayoutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/Main.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/Main.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -805,23 +739,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2091">
           <caret line="123" column="89" lean-forward="true" selection-start-line="123" selection-start-column="89" selection-end-line="123" selection-end-column="89" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
             <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#2790#2981#0" expanded="true" />
-            <element signature="e#2980#2981#0" expanded="true" />
             <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#4168#4359#0" expanded="true" />
-            <element signature="e#4358#4359#0" expanded="true" />
-            <element signature="method#getChart2d#0;class#MainController#0" expanded="false" />
-            <element signature="e#5493#5684#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#7838#7854#0" expanded="true" />
+            <element signature="method#optim#0;class#MainController#0" expanded="false" />
+            <element signature="method#getAlert#0;class#MainController#0" expanded="false" />
+            <element signature="method#isTrueArea#0;class#MainController#0" expanded="false" />
+            <element signature="method#addingsArrays#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -839,24 +768,20 @@
         <state relative-caret-position="782">
           <caret line="56" column="16" lean-forward="false" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayoutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayout.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/RootLayoutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/RootLayout.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -867,28 +792,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="50" column="42" lean-forward="false" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
             <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#2790#2981#0" expanded="true" />
-            <element signature="e#2980#2981#0" expanded="true" />
             <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#4168#4359#0" expanded="true" />
-            <element signature="e#4358#4359#0" expanded="true" />
-            <element signature="method#getChart2d#0;class#MainController#0" expanded="false" />
-            <element signature="e#5493#5684#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#7838#7854#0" expanded="true" />
+            <element signature="method#optim#0;class#MainController#0" expanded="false" />
+            <element signature="method#getAlert#0;class#MainController#0" expanded="false" />
+            <element signature="method#isTrueArea#0;class#MainController#0" expanded="false" />
+            <element signature="method#addingsArrays#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/Main.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/Main.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -944,7 +864,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/SquarifyDemo.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayout.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/RootLayout.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -968,97 +888,109 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/OverlayDemo.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/XYZBarChart3DFXDemo1.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/Drawer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/RootLayoutController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/back.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/sample/view/StylePlot.css" />
+    <entry file="file://$PROJECT_DIR$/target/classes/sample/view/back.png" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jzy3d/jzy3d-api/1.0.0/jzy3d-api-1.0.0.jar!/org/jzy3d/colors/colormaps/ColorMapHotCold.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+        <state relative-caret-position="119">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jzy3d/jzy3d-api/1.0.0/jzy3d-api-1.0.0.jar!/org/jzy3d/colors/colormaps/ColorMapRainbowNoBorder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jzy3d/jzy3d-api/1.0.0/jzy3d-api-1.0.0.jar!/org/jzy3d/colors/colormaps/ColorMapRainbow.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/Main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/javafx-src.zip!/javafx/beans/value/ChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="57" column="44" lean-forward="false" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+        <state relative-caret-position="291">
+          <caret line="62" column="9" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/AreaStyle.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/CalculateGraph2d.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="76" column="53" lean-forward="false" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
+            <element signature="e#2519#2520#0" expanded="true" />
+            <element signature="e#2552#2553#0" expanded="true" />
+            <element signature="e#2611#2612#0" expanded="true" />
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#2686#2687#0" expanded="true" />
+            <element signature="e#2716#2717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/RootLayoutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/StylePlot.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-338">
+          <caret line="255" column="26" lean-forward="false" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
+          <folding>
+            <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
+            <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
+            <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
+            <element signature="method#optim#0;class#MainController#0" expanded="false" />
+            <element signature="method#getAlert#0;class#MainController#0" expanded="false" />
+            <element signature="method#isTrueArea#0;class#MainController#0" expanded="false" />
+            <element signature="method#addingsArrays#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+        <state relative-caret-position="1054">
+          <caret line="62" column="20" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="62" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/CalculateGraph2d.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-185">
-          <caret line="35" column="64" lean-forward="false" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/back.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/sample/view/StylePlot.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/Main.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/sample/view/back.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/StylePlot.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/view/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="184" column="5" lean-forward="true" selection-start-line="157" selection-start-column="4" selection-end-line="184" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#clearFields#0;class#MainController#0" expanded="false" />
-            <element signature="method#getDemoChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#2790#2981#0" expanded="true" />
-            <element signature="e#2980#2981#0" expanded="true" />
-            <element signature="method#get2dChart#0;class#MainController#0" expanded="false" />
-            <element signature="e#4168#4359#0" expanded="true" />
-            <element signature="e#4358#4359#0" expanded="true" />
-            <element signature="method#getChart2d#0;class#MainController#0" expanded="false" />
-            <element signature="e#5493#5684#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#7838#7854#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

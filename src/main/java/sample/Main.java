@@ -7,8 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sample.view.MainController;
-import sample.view.RootLayoutController;
+import sample.FXMLControllers.MainController;
+import sample.FXMLControllers.RootLayoutController;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class Main extends Application {
     private void showLayout() throws IOException {
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/Main.fxml"));
+            loader.setLocation(Main.class.getResource("View/Main.fxml"));
             AnchorPane lruPane = loader.load();
 
             rootLayout.setCenter(lruPane);
@@ -47,7 +47,7 @@ public class Main extends Application {
     private void initRootLayout() throws IOException {
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/RootLayout.fxml"));
+            loader.setLocation(Main.class.getResource("View/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             Scene scene = new Scene(rootLayout);

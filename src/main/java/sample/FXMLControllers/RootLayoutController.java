@@ -1,4 +1,4 @@
-package sample.view;
+package sample.FXMLControllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
