@@ -20,7 +20,7 @@ public class RootLayoutController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Optimizatior");
         alert.setHeaderText("About");
-        alert.setContentText("Author: Ilya Likhachev\ngroup 455");
+        alert.setContentText("Author: Stoyan Igantiy\ngroup 455");
 
         alert.showAndWait();
     }

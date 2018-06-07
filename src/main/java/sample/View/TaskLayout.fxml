@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLControllers.TaskLayoutController">
+   <children>
+      <Button layoutX="535.0" layoutY="411.0" mnemonicParsing="false" onAction="#onClickChoose" text="Выбрать задачу" />
+      <TableView fx:id="taskView" layoutX="14.0" layoutY="14.0" onMouseClicked="#onClickSelect" prefHeight="383.0" prefWidth="173.0">
+        <columns>
+          <TableColumn fx:id="taskColumn" prefWidth="162.0" text="Задачи" />
+        </columns>
+      </TableView>
+      <TextArea fx:id="taskAreaField" layoutX="214.0" layoutY="14.0" prefHeight="383.0" prefWidth="422.0" />
+      <Button layoutX="14.0" layoutY="411.0" mnemonicParsing="false" onAction="#onClickExit" text="Отмена" />
+   </children>
+</AnchorPane>

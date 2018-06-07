@@ -65,16 +65,39 @@ public class CalculateGraph2d {
     }
 
     public void outArea(){
-        for(double x = xMin; x <= xMax; x = x + scan){
+        for(double x = xMin; x <= xMax; x = x + 0.01){
             outArea.getData().add(new XYChart.Data<>(x, yMax));
-            for (double y = yMin; y <= yMax; y = y + scan){
-                if(paramX*x+paramY*y>=paramAnswer){
+            boolean isTrue = false;
+            for (double y = yMax; y >= yMin; y = y - 0.01){
+                if(paramX*x+paramY*y<paramAnswer){
                     outArea.getData().add(new XYChart.Data<>(x,y));
+                    isTrue = true;
                     break;
                 }
             }
+            if (!isTrue){
+                outArea.getData() .add(new XYChart.Data<>(x,yMin));
+            }
         }
-        outArea.getData().add(new XYChart.Data<>(xMax, yMax));
+        //outArea.getData().add(new XYChart.Data<>(xMax, yMax));
+    }
+
+    public void outAreaTest(){
+        for(double x = xMin; x <= xMax; x = x + 0.01){
+            outArea.getData().add(new XYChart.Data<>(x, yMin));
+            boolean isTrue = false;
+            for (double y = yMin; y <= yMax; y = y + 0.01){
+                if(paramX*x+paramY*y>=paramAnswer){
+                    outArea.getData().add(new XYChart.Data<>(x,y));
+                    isTrue = true;
+                    break;
+                }
+            }
+            if (!isTrue){
+                outArea.getData() .add(new XYChart.Data<>(x,yMax));
+            }
+        }
+        //outArea.getData().add(new XYChart.Data<>(xMax, yMax));
     }
 
     public XYChart.Data<Number, Number> getCalculateX() {

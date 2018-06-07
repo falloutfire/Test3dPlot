@@ -27,17 +27,21 @@ import org.jzy3d.plot3d.builder.Mapper;
 import org.jzy3d.plot3d.builder.concrete.OrthonormalGrid;
 import org.jzy3d.plot3d.primitives.Shape;
 import org.jzy3d.plot3d.rendering.canvas.Quality;
+import sample.Entities.Task;
 import sample.FXMLControllers.CalculateGraph2d;
+import sample.Main;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class MainController {
 
-    @FXML
-    private ComboBox taskBox;
+    public Label t1ValueLabel;
+    public Label t2ValueLabel;
     @FXML
     private ComboBox methodBox;
     @FXML
@@ -67,57 +71,37 @@ public class MainController {
     @FXML
     private TextField scanField;
 
+    private Main main;
+    private Task task;
+
     private ImageView imageView;
     private ImageView imageView2d;
     private JavaFXChartFactory factory;
     private AWTChart chart;
 
     private ObservableList<String> methodsArray = FXCollections.observableArrayList();
-    private ObservableList<String> taskArray = FXCollections.observableArrayList();
 
     private boolean isTrue;
 
     public MainController() {
     }
 
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
     public void initialize() {
         addingsArrays();
         methodBox.setItems(methodsArray);
-        taskBox.setItems(taskArray);
-        taskBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.equals(taskArray.get(0))){
-                xMinField.setText("-5");
-                xMaxField.setText("0");
-                yMinField.setText("-1");
-                yMaxField.setText("5");
-                paramX.setText("0.5");
-                paramY.setText("1");
-                paramAnswer.setText("1");
-                scanField.setText("0.1");
-                mathModelArea.setText("V(T1,T2)=α*G*(T1^2+β*T2-µ*∆ρ1)^N+γ*(β1*T1+T2^2-µ1*∆ρ2)^N\n" +
-                        "Pr_смены(T1,T2)= t*Pr*V(T1,T2)\n" + "Pr_смены(T1,T2)→ min\n\n" +
-                        "∆ρ1=11 кПа\n" + "∆ρ2=7 кПа\n" + "N=2 \n" + "G=1 м^3/ч\n" + "α, β, µ, γ, β1, µ1 = 1");
-            }
-        });
 
     }
-
     //очистка полей
     public void clearFields() {
-        scanField.clear();
-        xMaxField.clear();
-        xMinField.clear();
-        yMaxField.clear();
-        yMinField.clear();
-        paramY.clear();
-        paramX.clear();
-        paramAnswer.clear();
         anchor2dPane.getChildren().clear();
         Pane3d.getChildren().clear();
-        minV.setText("Min значение объема фильтрата: ");
-        minOut.setText("Min значение расхода: ");
+        minV.setText(task.getMinV());
+        minOut.setText(task.getMinOut());
     }
-
     //3д решение
     private AWTChart getDemoChart(JavaFXChartFactory factory, double xMin, double xMax, double yMin, double yMax) {
         // -------------------------------
@@ -140,7 +124,6 @@ public class MainController {
         surface.setFaceDisplayed(true);
         surface.setWireframeDisplayed(false);
 
-        // -------------------------------
         // Create a chart
         Quality quality = Quality.Advanced;
         //quality.setSmoothPolygon(true);
@@ -167,7 +150,7 @@ public class MainController {
         int steps = 200;
 
         // Create the object to represent the function over the given range.
-        final Shape surface = (Shape) Builder.buildOrthonormal(new OrthonormalGrid(xrange, steps, yrange, steps), mapper);
+        final Shape surface = Builder.buildOrthonormal(new OrthonormalGrid(xrange, steps, yrange, steps), mapper);
         ColorMapper myColorMapper = new ColorMapper(new ColorMapRainbowNoBorder(), surface.getBounds().getZmin(), surface.getBounds().getZmax(), new Color(1, 1, 1, .5f));
         surface.setColorMapper(myColorMapper);
         surface.setFaceDisplayed(true);
@@ -196,7 +179,7 @@ public class MainController {
             float parAns = Float.parseFloat(paramAnswer.getText());
 
             if(!(methodBox.getSelectionModel().getSelectedItem() == null)){
-                if (xMax <= 10 && xMin >= -10 && yMax <= 10 && yMin >= -10 && isTrueArea(xMin, yMin, parX, parY, parAns)) {
+                if (xMax <= 10 && xMin >= -10 && yMax <= 10 && yMin >= -10 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns)) {
                     factory = new JavaFXChartFactory();
                     chart = getDemoChart(factory, xMin, xMax, yMin, yMax);
                     imageView = factory.bindImageView(chart);
@@ -212,39 +195,31 @@ public class MainController {
                     NumberAxis yAxis = new NumberAxis(yMin, yMax, 1);
 
                     LineChart<Number, Number> chart2dLine = new LineChart<Number, Number>(xAxis, yAxis);
-
-                    XYChart.Series seriesDiag = new XYChart.Series();
                     XYChart.Series seriesAnswer = new XYChart.Series();
-
 
                     CalculateGraph2d calc2d = new CalculateGraph2d(xMin, xMax, yMin, yMax, parX, parY, parAns, scan);
                     XYChart.Series seriesArea = calc2d.getOutArea();
-                    seriesDiag.getData().add(calc2d.getCalculateX());
-                    seriesDiag.getData().add(calc2d.getCalculateY());
 
                     float[] optXY;
                     optXY = optim(xMin, xMax, yMin, yMax, scan, parX, parY, parAns);
-                    seriesAnswer.getData().add(new XYChart.Data<Number, Number>(optXY[0], optXY[1]));
+
 
                     if (isTrue) {
-                        chart2dLine.getData().add(seriesDiag);
-                        chart2dLine.getData().add(seriesAnswer);
+                        chart2dLine.getData().clear();
+                        seriesAnswer.getData().add(new XYChart.Data<Number, Number>(optXY[0], optXY[1]));
+
                         chart2dLine.getData().add(seriesArea);
+                        chart2dLine.getData().add(seriesAnswer);
                         chart2dLine.setLegendVisible(false);
                         chart2dLine.setMaxWidth(400);
 
-                        Node lineDiag = seriesDiag.getNode().lookup(".chart-series-line");
-                        lineDiag.setStyle("-fx-stroke: #FF0000;" +
-                                "-fx-stroke-width: 2px;\n" +
-                                "-fx-effect: null;");
-
                         Node lineArea = seriesArea.getNode().lookup(".chart-series-line");
                         lineArea.setStyle("-fx-stroke: #000000;" +
-                                "-fx-stroke-width: 1px;" +
+                                "-fx-stroke-width: 3px;" +
                                 "-fx-effect: null;");
 
                         Node lineAnswer = seriesAnswer.getNode().lookup(".chart-series-line");
-                        lineAnswer.setStyle("-fx-stroke-width: 7px;");
+                        lineAnswer.setStyle("-fx-stroke-width: 10px;");
 
                         chart2dLine.setCreateSymbols(false);
 
@@ -252,8 +227,6 @@ public class MainController {
                         File f = new File(resourceF.substring(6));
                         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "PNG", f);
 
-                        //final String resourceCss = getClass().getResource("StylePlot.css").toExternalForm();
-                        //chart2dLine.getStylesheets().add(resourceCss);
                         Node stylePlotNode = chart2dLine.lookup(".chart-plot-background");
                         stylePlotNode.setStyle("-fx-background-color: transparent;");
 
@@ -275,17 +248,17 @@ public class MainController {
                     } else {
                         anchor2dPane.getChildren().clear();
                         Pane3d.getChildren().clear();
-                        getAlert("Ошибка условий ограничения", "Проверьте все ячейки на наличие ошибок!\n");
+                        main.getAlert("Ошибка условий ограничения", "Проверьте все ячейки на наличие ошибок!\n");
                     }
                 } else {
-                    getAlert("Неправильный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
+                    main.getAlert("Неправильный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
                 }
             } else {
-                getAlert("Не выбран метод расчета решения", "Выберете метод расчета решения задачи!");
+                main.getAlert("Не выбран метод расчета решения", "Выберете метод расчета решения задачи!");
             }
 
         } catch (NumberFormatException e) {
-            getAlert("Неправильный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
+            main.getAlert("Неправильный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
         }
     }
 
@@ -294,7 +267,7 @@ public class MainController {
         float v, rashod;
         float[] optXY = new float[2];
         //функция, вычисляется первое значение для сравнения с поледующими для нахождения минимума
-        float minimumV = (float) (Math.pow((xMax * xMax + yMax - 11), 2) + Math.pow((xMax + yMax * yMax - 7), 2));
+        float minimumV = Float.MAX_VALUE;
         System.out.println("T1 = " + xMax);
         System.out.println("T2 = " + yMax);
         System.out.println("V = " + minimumV);
@@ -303,19 +276,18 @@ public class MainController {
         for (float i = xMin; i <= xMax; i = i + scan) {
             for (float a = yMax; a >= yMin; a = a - scan) {
                 if (parX * i + parY * a < parAns) {
+                    System.out.println("Координаты точки:" + "x=" + i + "y=" + a);
                     isTrue = true;
-                    v = (float) (Math.pow((i * i + a - 11), 2) + Math.pow((i + a * a - 7), 2));
+                    v = (float) (Math.pow(a * a + i - 11, 2) + Math.pow(a + i * i - 7, 2));
+                    System.out.println(minimumV + ">" + v);
                     if (minimumV >= v) {
                         minimumV = v;
+                        System.out.println(i + "*" + a);
                         optXY[0] = i;
                         optXY[1] = a;
-                        System.out.println("T1 = " + i);
-                        System.out.println("T2 = " + a);
-                        System.out.println("V = " + minimumV);
-                        rashod = minimumV * 8 * 10;
-                        System.out.println("Rashod = " + String.format("%.1f", rashod));
-                        minV.setText("Минимальное значение\nобъема фильтрата: " + String.format("%.3f", minimumV));
-                        minOut.setText("Минимальная себестоимость\nфильтрата за смену: " + String.format("%.1f", rashod));
+                        rashod = minimumV * 100;
+                        minV.setText(task.getMinV() + String.format("%.1f", minimumV));
+                        minOut.setText(task.getMinOut() + String.format("%.0f", rashod));
                     }
                 }
             }
@@ -324,21 +296,39 @@ public class MainController {
         return optXY;
     }
 
-    private void getAlert(String header, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Ошибка");
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
-    private boolean isTrueArea(double xMin, double yMin, double parX, double parY, double parAns) {
-        return parAns >= xMin * parX + yMin * parY;
+    private boolean isTrueArea(double xMin, double xMax, double yMin, double yMax, double parX, double parY, double parAns) {
+        return parAns <= xMax * parX + yMax * parY || parAns <= xMin * parX + yMax * parY;
     }
 
     private void addingsArrays(){
         methodsArray.add("Метод полного перебора");
-        taskArray.add("Расчет минимального значения фильтрата");
     }
 
+    public void onClickChooseTask(ActionEvent actionEvent) {
+        boolean isChoose = main.showTaskDialog();
+        if(isChoose){
+            xMinField.setText(String.valueOf(task.getxFrom()));
+            xMaxField.setText(String.valueOf(task.getxTo()));
+            yMinField.setText(String.valueOf(task.getyFrom()));
+            yMaxField.setText(String.valueOf(task.getyTo()));
+            paramX.setText(String.valueOf(task.getxParam()));
+            paramY.setText(String.valueOf(task.getyParam()));
+            paramAnswer.setText(String.valueOf(task.getAnswerParam()));
+            scanField.setText("0.1");
+            String result;
+            final InputStream resourceF = this.getClass().getClassLoader().getResourceAsStream(task.getPathFormal());
+            try (Scanner s = new Scanner(resourceF).useDelimiter("\\A")) {
+                result = s.hasNext() ? s.next() : "";
+            }
+            mathModelArea.setText(result);
+        }
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
 }

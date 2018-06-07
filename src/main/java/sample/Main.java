@@ -4,11 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.FXMLControllers.MainController;
 import sample.FXMLControllers.RootLayoutController;
+import sample.FXMLControllers.TaskLayoutController;
 
 import java.io.IOException;
 
@@ -26,6 +29,8 @@ public class Main extends Application {
         primaryStage.sizeToScene();
         initRootLayout();
         showLayout();
+        getPrimaryStage().getScene().getStylesheets().add(Main.class.getResource("View/Style.css").toExternalForm());
+
     }
 
     private void showLayout() throws IOException {
@@ -37,6 +42,7 @@ public class Main extends Application {
             rootLayout.setCenter(lruPane);
 
             mainController = loader.getController();
+            mainController.setMain(this);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,7 +73,45 @@ public class Main extends Application {
         launch(args);
     }
 
+    public Stage getPrimaryStage(){
+        return primaryStage;
+    }
+
     public MainController getMainController(){
         return mainController;
+    }
+
+    public boolean showTaskDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("View/TaskLayout.fxml"));
+            AnchorPane pane = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Выбор задачи");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(pane);
+            dialogStage.setScene(scene);
+            scene.getStylesheets().add(Main.class.getResource("View/Style.css").toExternalForm());
+
+            TaskLayoutController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMain(this);
+
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void getAlert(String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
