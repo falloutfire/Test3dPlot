@@ -339,11 +339,11 @@ public class MainController {
     }
 
     private boolean isTrueArea(double xMin, double xMax, double yMin, double yMax, double parX, double parY, double parAns, boolean isUp) {
-        if(isUp){
+        //if(isUp){
             return parAns <= xMax * parX + yMax * parY || parAns <= xMin * parX + yMax * parY;
-        } else {
+        /*} else {
             return parAns <= xMax * parX + yMin * parY || parAns <= xMin * parX + yMin * parY;
-        }
+        }*/
     }
 
     private void addingsArrays(){

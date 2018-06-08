@@ -19,8 +19,8 @@ public class RootLayoutController {
     public void handleAbout(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Optimizatior");
-        alert.setHeaderText("About");
-        alert.setContentText("Author: Stoyan Igantiy\ngroup 455");
+        alert.setHeaderText("О программе");
+        alert.setContentText("Автор: Лихачев Илья\nГруппа 455");
 
         alert.showAndWait();
     }
