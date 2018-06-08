@@ -217,7 +217,7 @@ public class MainController {
                     XYChart.Series seriesArea = CalculateGraph2d.getOutArea(xMin, xMax, yMin, yMax, parX, parY, parAns, scan, task.isUp());
 
                     float[] optXY;
-                    optXY = optim(xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp());
+                    optXY = optim(xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp(), task.getCoef());
 
 
                     if (isTrue) {
@@ -283,7 +283,7 @@ public class MainController {
     }
 
     //расчет решения 
-    private float[] optim(float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp) {
+    private float[] optim(float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp, float coef) {
         float v, rashod;
         float[] optXY = new float[2];
         //функция, вычисляется первое значение для сравнения с поледующими для нахождения минимума
@@ -304,7 +304,7 @@ public class MainController {
                             minimumV = v;
                             optXY[0] = i;
                             optXY[1] = a;
-                            rashod = minimumV * 100;
+                            rashod = minimumV * coef;
                             minV.setText(task.getMinV() + String.format("%.1f", minimumV));
                             minOut.setText(task.getMinOut() + String.format("%.0f", rashod));
 
