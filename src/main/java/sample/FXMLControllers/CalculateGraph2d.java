@@ -4,9 +4,7 @@ import javafx.scene.chart.XYChart;
 
 public class CalculateGraph2d {
 
-
-
-    public static XYChart.Series getOutArea(double xMin, double xMax, double yMin, double yMax, double paramX, double paramY, double paramAnswer, double scan, boolean isUp) {
+    public static XYChart.Series<Number, Number> getOutArea(double xMin, double xMax, double yMin, double yMax, double paramX, double paramY, double paramAnswer, double scan, boolean isUp) {
         XYChart.Series<Number, Number> outArea = new XYChart.Series<>();
         if (isUp) {
             for (double x = xMin; x <= xMax; x = x + 0.01) {

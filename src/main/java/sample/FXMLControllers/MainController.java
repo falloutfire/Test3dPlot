@@ -42,19 +42,13 @@ import java.util.Scanner;
 public class MainController {
 
     @FXML
-    private Label t1ValueLabel;
-    @FXML
-    private Label t2ValueLabel;
+    private TextArea resultTextArea;
     @FXML
     private Label isUpLabel;
     @FXML
-    private ComboBox methodBox;
+    private ComboBox<String> methodBox;
     @FXML
     private TextArea mathModelArea;
-    @FXML
-    private Label minOut;
-    @FXML
-    private Label minV;
     @FXML
     private TextField paramX;
     @FXML
@@ -98,15 +92,15 @@ public class MainController {
     public void initialize() {
         addingsArrays();
         methodBox.setItems(methodsArray);
-
     }
+
     //очистка полей
-    public void clearFields() {
+    void clearFields() {
         anchor2dPane.getChildren().clear();
         Pane3d.getChildren().clear();
-        minV.setText(task.getMinV());
-        minOut.setText(task.getMinOut());
+        resultTextArea.clear();
     }
+
     //3д решение
     private AWTChart getChart(JavaFXChartFactory factory, double xMin, double xMax, double yMin, double yMax, Task task) {
         // -------------------------------
@@ -157,8 +151,7 @@ public class MainController {
                         .build()
                         .setVariable("x", x)
                         .setVariable("y", y);
-                double result = e.evaluate();
-                return result;
+                return e.evaluate();
             }
         };
 
@@ -176,9 +169,7 @@ public class MainController {
 
         MapperContourPictureGenerator contour = new MapperContourPictureGenerator(mapper, xrange, yrange);
 
-        BufferedImage bufferedImage = contour.getFilledContourImage(new DefaultContourColoringPolicy(myColorMapper), 400, 400, 30);
-
-        return bufferedImage;
+        return contour.getFilledContourImage(new DefaultContourColoringPolicy(myColorMapper), 400, 400, 30);
     }
 
     //обработка нажатия на кнопку "Решение"
@@ -212,9 +203,9 @@ public class MainController {
                     NumberAxis yAxis = new NumberAxis(yMin, yMax, 1);
 
                     LineChart<Number, Number> chart2dLine = new LineChart<Number, Number>(xAxis, yAxis);
-                    XYChart.Series seriesAnswer = new XYChart.Series();
+                    XYChart.Series<Number, Number> seriesAnswer = new XYChart.Series<>();
 
-                    XYChart.Series seriesArea = CalculateGraph2d.getOutArea(xMin, xMax, yMin, yMax, parX, parY, parAns, scan, task.isUp());
+                    XYChart.Series<Number, Number> seriesArea = CalculateGraph2d.getOutArea(xMin, xMax, yMin, yMax, parX, parY, parAns, scan, task.isUp());
 
                     float[] optXY;
                     optXY = optim(xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp(), task.getCoef());
@@ -261,9 +252,6 @@ public class MainController {
                         anchor2dPane.getChildren().add(chart2dLine);
 
                         Pane3d.getChildren().add(imageView);
-
-                        t1ValueLabel.setText("Значение X: " + optXY[0]);
-                        t2ValueLabel.setText("Значение Y: " + optXY[1]);
                     } else {
                         anchor2dPane.getChildren().clear();
                         Pane3d.getChildren().clear();
@@ -305,9 +293,7 @@ public class MainController {
                             optXY[0] = i;
                             optXY[1] = a;
                             rashod = minimumV * coef;
-                            minV.setText(task.getMinV() + String.format("%.1f", minimumV));
-                            minOut.setText(task.getMinOut() + String.format("%.0f", rashod));
-
+                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1]);
                         }
                     }
                 }
@@ -328,8 +314,7 @@ public class MainController {
                             optXY[0] = i;
                             optXY[1] = a;
                             rashod = minimumV * 100;
-                            minV.setText(task.getMinV() + String.format("%.1f", minimumV));
-                            minOut.setText(task.getMinOut() + String.format("%.0f", rashod));
+                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1]);
                         }
                     }
                 }
@@ -339,11 +324,11 @@ public class MainController {
     }
 
     private boolean isTrueArea(double xMin, double xMax, double yMin, double yMax, double parX, double parY, double parAns, boolean isUp) {
-        //if(isUp){
+        if(!isUp){
             return parAns <= xMax * parX + yMax * parY || parAns <= xMin * parX + yMax * parY;
-        /*} else {
-            return parAns <= xMax * parX + yMin * parY || parAns <= xMin * parX + yMin * parY;
-        }*/
+        } else {
+            return parAns >= xMax * parX + yMin * parY || parAns >= xMin * parX + yMin * parY;
+        }
     }
 
     private void addingsArrays(){
@@ -361,8 +346,6 @@ public class MainController {
             paramY.setText(String.valueOf(task.getyParam()));
             paramAnswer.setText(String.valueOf(task.getAnswerParam()));
             scanField.setText("1");
-            minV.setText(task.getMinV());
-            minOut.setText(task.getMinOut());
             if(task.isUp()){
                 isUpLabel.setText("≤");
             } else {
@@ -374,14 +357,11 @@ public class MainController {
                 result = s.hasNext() ? s.next() : "";
             }
             mathModelArea.setText(result);
+            resultTextArea.clear();
         }
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
+    void setTask(Task task) {
         this.task = task;
     }
 }
