@@ -9,7 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -32,10 +35,7 @@ import org.jzy3d.plot3d.rendering.canvas.Quality;
 import sample.Entities.Task;
 import sample.Main;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -173,7 +173,7 @@ public class MainController {
     }
 
     //обработка нажатия на кнопку "Решение"
-    public void onClickStart(ActionEvent actionEvent) throws IOException {
+    public void onClickStart(ActionEvent actionEvent) {
 
         try {
             isTrue = false;
@@ -218,22 +218,15 @@ public class MainController {
                         chart2dLine.getData().add(seriesArea);
                         chart2dLine.getData().add(seriesAnswer);
                         chart2dLine.setLegendVisible(false);
+                        chart2dLine.setCreateSymbols(false);
                         chart2dLine.setMaxWidth(400);
 
                         Node lineArea = seriesArea.getNode().lookup(".chart-series-line");
                         lineArea.setStyle("-fx-stroke: #2c2c2c;" +
                                 "-fx-stroke-width: 3px;" +
                                 "-fx-effect: null;");
-
                         Node lineAnswer = seriesAnswer.getNode().lookup(".chart-series-line");
                         lineAnswer.setStyle("-fx-stroke-width: 9px;");
-
-                        chart2dLine.setCreateSymbols(false);
-
-                        final String resourceF = getClass().getResource("back.png").toExternalForm();
-                        File f = new File(resourceF.substring(6));
-                        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "PNG", f);
-
                         Node stylePlotNode = chart2dLine.lookup(".chart-plot-background");
                         stylePlotNode.setStyle("-fx-background-color: transparent;");
 
@@ -259,7 +252,7 @@ public class MainController {
                     }
                 } else {
                     main.getAlert("Неверно введены значения", "Проверьте все ячейки на наличие ошибок!\n" +
-                            "Ограничения должнылежать в пределах от -10 до 10\n");
+                            "Ограничения должны лежать в пределах от -10 до 10\n");
                 }
             } else {
                 main.getAlert("Не выбран метод расчета решения", "Выберете метод расчета решения задачи!");
@@ -353,7 +346,7 @@ public class MainController {
             }
             String result;
             final InputStream resourceF = this.getClass().getClassLoader().getResourceAsStream(task.getPathFormal());
-            try (Scanner s = new Scanner(resourceF).useDelimiter("\\A")) {
+            try (Scanner s = new Scanner(resourceF, "UTF_8").useDelimiter("\\A")) {
                 result = s.hasNext() ? s.next() : "";
             }
             mathModelArea.setText(result);

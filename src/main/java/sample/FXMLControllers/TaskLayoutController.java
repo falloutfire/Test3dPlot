@@ -71,7 +71,7 @@ public class TaskLayoutController {
         if (mouseEvent.getClickCount() == 2) {
             String result;
             final InputStream resourceF = this.getClass().getClassLoader().getResourceAsStream(((Task) taskView.getSelectionModel().getSelectedItem()).getPathFull());
-            try (Scanner s = new Scanner(resourceF).useDelimiter("\\A")) {
+            try (Scanner s = new Scanner(resourceF, "UTF-8").useDelimiter("\\A")) {
                 result = s.hasNext() ? s.next() : "";
             }
             task = (Task) taskView.getSelectionModel().getSelectedItem();
