@@ -187,7 +187,7 @@ public class MainController {
             float parAns = Float.parseFloat(paramAnswer.getText());
 
             if(!(methodBox.getSelectionModel().getSelectedItem() == null)){
-                if (xMax <= 10 && xMin >= -10 && yMax <= 10 && yMin >= -10 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns, task.isUp())) {
+                if (xMax <= 10 && xMin >= -10 && yMax <= 10 && yMin >= -10 && scan >= 0.1 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns, task.isUp())) {
                     factory = new JavaFXChartFactory();
                     chart = getChart(factory, xMin, xMax, yMin, yMax, task);
                     imageView = factory.bindImageView(chart);
