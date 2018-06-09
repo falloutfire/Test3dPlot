@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7a0bd27c-6f57-4ff8-959d-367588babb5b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Entities/Task1/formal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/Entities/Task1/formal.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Entities/Task1/full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/Entities/Task1/full.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Entities/Task2/formal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/Entities/Task2/formal.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Entities/Task2/full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/Entities/Task2/full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/Entities/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/Main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/view/RootLayout.fxml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +20,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="348" column="58" selection-start-line="348" selection-start-column="58" selection-end-line="348" selection-end-column="58" />
+            <state relative-caret-position="119">
+              <caret line="309" column="168" selection-start-line="309" selection-start-column="168" selection-end-line="309" selection-end-column="168" />
               <folding>
                 <element signature="method#getChart#0;class#MainController#0" />
               </folding>
@@ -50,6 +43,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskLayoutController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="44" column="79" selection-start-line="44" selection-start-column="79" selection-end-line="44" selection-end-column="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,6 +89,24 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sample/Entities/Task.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1785">
+              <caret line="161" column="34" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
+              <folding>
+                <element signature="e#3135#3136#0" expanded="true" />
+                <element signature="e#3162#3163#0" expanded="true" />
+                <element signature="e#3199#3200#0" expanded="true" />
+                <element signature="e#3224#3225#0" expanded="true" />
+                <element signature="e#3376#3377#0" expanded="true" />
+                <element signature="e#3426#3427#0" expanded="true" />
+                <element signature="e#3468#3469#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,14 +151,14 @@
         <option value="$PROJECT_DIR$/src/main/java/sample/Entities/full.txt" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Entities/Task1/full.txt" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Entities/Task.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/RootLayoutController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/CalculateGraph2d.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Entities/Task2/full.txt" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Entities/Task2/formal.txt" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Entities/Task1/formal.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/Entities/Task.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java" />
       </list>
     </option>
@@ -212,12 +235,6 @@
               <item name="Test3dPlot" type="b2602c69:ProjectViewProjectNode" />
               <item name="KursMO" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Test3dPlot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KursMO" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="libraries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Test3dPlot" type="b2602c69:ProjectViewProjectNode" />
@@ -340,7 +357,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.Test3dPlot-1.0-SNAPSHOT-jar-with-dependencies.jar">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -405,8 +422,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JAR Application.Test3dPlot-1.0-SNAPSHOT-jar-with-dependencies.jar" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.Test3dPlot-1.0-SNAPSHOT-jar-with-dependencies.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -424,7 +441,7 @@
       <workItem from="1528381389266" duration="26539000" />
       <workItem from="1528453079433" duration="1442000" />
       <workItem from="1528472682366" duration="5038000" />
-      <workItem from="1528538357481" duration="5262000" />
+      <workItem from="1528538357481" duration="6938000" />
     </task>
     <task id="LOCAL-00001" summary="Add style, add math base">
       <created>1528410171215</created>
@@ -461,35 +478,43 @@
       <option name="project" value="LOCAL" />
       <updated>1528479472138</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix utf 8">
+      <created>1528546229497</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528546229497</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39359000" />
+    <option name="totallyTimeSpent" value="41035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32838285" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32838285" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.28668684" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.28668684" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32838285" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21406959" />
+      <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -537,12 +562,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Add style, add math base" />
     <MESSAGE value="add 2 task&#10;add parser&#10;fix layouts" />
     <MESSAGE value="fix coef" />
     <MESSAGE value="fix help" />
     <MESSAGE value="delete labels, add area" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete labels, add area" />
+    <MESSAGE value="fix utf 8" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix utf 8" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/RootLayoutController.java">
@@ -855,19 +885,6 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Entities/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="147" selection-start-line="147" selection-end-line="149" selection-end-column="5" />
-          <folding>
-            <element signature="e#3135#3136#0" expanded="true" />
-            <element signature="e#3162#3163#0" expanded="true" />
-            <element signature="e#3199#3200#0" expanded="true" />
-            <element signature="e#3224#3225#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/View/Style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -933,16 +950,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="73" column="58" selection-start-line="73" selection-start-column="58" selection-end-line="73" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -974,10 +981,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Entities/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="161" column="34" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
+          <folding>
+            <element signature="e#3135#3136#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
+            <element signature="e#3199#3200#0" expanded="true" />
+            <element signature="e#3224#3225#0" expanded="true" />
+            <element signature="e#3376#3377#0" expanded="true" />
+            <element signature="e#3426#3427#0" expanded="true" />
+            <element signature="e#3468#3469#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/TaskLayoutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="44" column="79" selection-start-line="44" selection-start-column="79" selection-end-line="44" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/FXMLControllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="348" column="58" selection-start-line="348" selection-start-column="58" selection-end-line="348" selection-end-column="58" />
+        <state relative-caret-position="119">
+          <caret line="309" column="168" selection-start-line="309" selection-start-column="168" selection-end-line="309" selection-end-column="168" />
           <folding>
             <element signature="method#getChart#0;class#MainController#0" />
           </folding>

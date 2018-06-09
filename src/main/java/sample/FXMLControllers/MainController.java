@@ -286,7 +286,7 @@ public class MainController {
                             optXY[0] = i;
                             optXY[1] = a;
                             rashod = minimumV * coef;
-                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1]);
+                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
                         }
                     }
                 }
@@ -307,7 +307,7 @@ public class MainController {
                             optXY[0] = i;
                             optXY[1] = a;
                             rashod = minimumV * 100;
-                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1]);
+                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
                         }
                     }
                 }
@@ -346,7 +346,7 @@ public class MainController {
             }
             String result;
             final InputStream resourceF = this.getClass().getClassLoader().getResourceAsStream(task.getPathFormal());
-            try (Scanner s = new Scanner(resourceF, "UTF_8").useDelimiter("\\A")) {
+            try (Scanner s = new Scanner(resourceF, "UTF-8").useDelimiter("\\A")) {
                 result = s.hasNext() ? s.next() : "";
             }
             mathModelArea.setText(result);

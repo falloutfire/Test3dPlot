@@ -38,11 +38,11 @@ public class TaskLayoutController {
 
     private void addTasks(ObservableList<Task> tasks) {
         tasks.add(new Task("Расчет минимальной\nсебестоимости фильтрата", "sample/Entities/Task1/full.txt",
-                "sample/Entities/Task1/formal.txt", "Минимальная себестоимость фильтрата\nза смену равна ", " y.e. и достигается \nпри температурах на перегородках Т1 и Т2\nравных",
-                -5, 0, -1, 5, 0.5f, 1, 1, "(x^2 + y - 11)^2 + (x + y^2 - 7)^2", 80, true));
+                "sample/Entities/Task1/formal.txt", "Минимальная себестоимость фильтрата\nза смену равна ", " y.e. и достигается \nпри температурах на перегородках Т1 и Т2\nравных ",
+                -5, 0, -1, 5, 0.5f, 1, 1, "(x^2 + y - 11)^2 + (x + y^2 - 7)^2", 80, true, " градусов Цельсия"));
         tasks.add(new Task("Расчет минимальных\nзатрат на очистку", "sample/Entities/Task2/full.txt",
-                "sample/Entities/Task2/formal.txt", "Минимальная затраты на фильтрацию ", "рмрпморпм",
-                -3, 3, -3, 6, -1, 1, 1, "2000*((x-y)^2 + (1-y)^2)", 100, false));
+                "sample/Entities/Task2/formal.txt", "Минимальные затраты на очистку\nреакционной массы равны ", " у.е. \nи достигаются при температурах хладогента в\nтеплообменных устройствах реактора\nравных ",
+                -3, 3, -3, 6, -1, 1, 1, "2000*((x-y)^2 + (1-y)^2)", 100, false, " градусов Цельсия"));
     }
 
     public void onClickChoose(ActionEvent actionEvent) {

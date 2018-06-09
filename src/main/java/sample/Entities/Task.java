@@ -17,9 +17,10 @@ public class Task {
     private String func;
     private float coef;
     private boolean isUp;
+    private String variables;
 
     public Task(String nameTask, String pathFull, String pathFormal, String minV, String minOut, float xFrom, float xTo,
-                float yFrom, float yTo, float xParam, float yParam, float answerParam, String func, float coef, boolean isUp) {
+                float yFrom, float yTo, float xParam, float yParam, float answerParam, String func, float coef, boolean isUp, String variables) {
         this.nameTask = nameTask;
         this.pathFull = pathFull;
         this.pathFormal = pathFormal;
@@ -35,6 +36,7 @@ public class Task {
         this.func = func;
         this.coef = coef;
         this.isUp = isUp;
+        this.variables = variables;
     }
 
     public String getNameTask() {
@@ -155,5 +157,13 @@ public class Task {
 
     public void setUp(boolean up) {
         isUp = up;
+    }
+
+    public String getVariables() {
+        return variables;
+    }
+
+    public void setVariables(String variables) {
+        this.variables = variables;
     }
 }
