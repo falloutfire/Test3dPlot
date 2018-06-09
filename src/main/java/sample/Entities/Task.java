@@ -2,6 +2,7 @@ package sample.Entities;
 
 public class Task {
 
+    private boolean isMin;
     private String nameTask;
     private String pathFull;
     private String pathFormal;
@@ -19,8 +20,9 @@ public class Task {
     private boolean isUp;
     private String variables;
 
-    public Task(String nameTask, String pathFull, String pathFormal, String minV, String minOut, float xFrom, float xTo,
+    public Task(boolean isMin, String nameTask, String pathFull, String pathFormal, String minV, String minOut, float xFrom, float xTo,
                 float yFrom, float yTo, float xParam, float yParam, float answerParam, String func, float coef, boolean isUp, String variables) {
+        this.isMin = isMin;
         this.nameTask = nameTask;
         this.pathFull = pathFull;
         this.pathFormal = pathFormal;
@@ -165,5 +167,13 @@ public class Task {
 
     public void setVariables(String variables) {
         this.variables = variables;
+    }
+
+    public boolean isMin() {
+        return isMin;
+    }
+
+    public void setMin(boolean min) {
+        isMin = min;
     }
 }

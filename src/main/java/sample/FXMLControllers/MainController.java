@@ -186,7 +186,7 @@ public class MainController {
             float parY = Float.parseFloat(paramY.getText());
             float parAns = Float.parseFloat(paramAnswer.getText());
 
-            if(!(methodBox.getSelectionModel().getSelectedItem() == null)){
+            if (!(methodBox.getSelectionModel().getSelectedItem() == null)) {
                 if (xMax <= 10 && xMin >= -10 && yMax <= 10 && yMin >= -10 && scan >= 0.1 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns, task.isUp())) {
                     factory = new JavaFXChartFactory();
                     chart = getChart(factory, xMin, xMax, yMin, yMax, task);
@@ -208,7 +208,7 @@ public class MainController {
                     XYChart.Series<Number, Number> seriesArea = CalculateGraph2d.getOutArea(xMin, xMax, yMin, yMax, parX, parY, parAns, scan, task.isUp());
 
                     float[] optXY;
-                    optXY = optim(xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp(), task.getCoef());
+                    optXY = optim(task.isMin(), xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp(), task.getCoef());
 
 
                     if (isTrue) {
@@ -264,50 +264,97 @@ public class MainController {
     }
 
     //расчет решения 
-    private float[] optim(float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp, float coef) {
+    private float[] optim(boolean isMin, float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp, float coef) {
         float v, rashod;
         float[] optXY = new float[2];
-        //функция, вычисляется первое значение для сравнения с поледующими для нахождения минимума
-        float minimumV = Float.MAX_VALUE;
-        //перебор, scan - шаг
-        if(isUp){
-            for (float i = xMin; i <= xMax; i = i + scan) {
-                for (float a = yMax; a >= yMin; a = a - scan) {
-                    if (parX * i + parY * a <= parAns) {
-                        isTrue = true;
-                        Expression e = new ExpressionBuilder(task.getFunc())
-                                .variables("x", "y")
-                                .build()
-                                .setVariable("x", a)
-                                .setVariable("y", i);
-                        v = (float) e.evaluate();
-                        if (minimumV >= v) {
-                            minimumV = v;
-                            optXY[0] = i;
-                            optXY[1] = a;
-                            rashod = minimumV * coef;
-                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+        if (isMin) {
+            float minimumV = Float.MAX_VALUE;
+            //перебор, scan - шаг
+            if (isUp) {
+                for (float i = xMin; i <= xMax; i = i + scan) {
+                    for (float a = yMax; a >= yMin; a = a - scan) {
+                        if (parX * i + parY * a <= parAns) {
+                            isTrue = true;
+                            Expression e = new ExpressionBuilder(task.getFunc())
+                                    .variables("x", "y")
+                                    .build()
+                                    .setVariable("x", a)
+                                    .setVariable("y", i);
+                            v = (float) e.evaluate();
+                            if (minimumV >= v) {
+                                minimumV = v;
+                                optXY[0] = i;
+                                optXY[1] = a;
+                                rashod = minimumV * coef;
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (float i = xMin; i <= xMax; i = i + scan) {
+                    for (float a = yMax; a >= yMin; a = a - scan) {
+                        if (parX * i + parY * a >= parAns) {
+                            isTrue = true;
+                            Expression e = new ExpressionBuilder(task.getFunc())
+                                    .variables("x", "y")
+                                    .build()
+                                    .setVariable("x", a)
+                                    .setVariable("y", i);
+                            v = (float) e.evaluate();
+                            if (minimumV >= v) {
+                                minimumV = v;
+                                optXY[0] = i;
+                                optXY[1] = a;
+                                rashod = minimumV * coef;
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                            }
                         }
                     }
                 }
             }
         } else {
-            for (float i = xMin; i <= xMax; i = i + scan) {
-                for (float a = yMax; a >= yMin; a = a - scan) {
-                    if (parX * i + parY * a >= parAns) {
-                        isTrue = true;
-                        Expression e = new ExpressionBuilder(task.getFunc())
-                                .variables("x", "y")
-                                .build()
-                                .setVariable("x", a)
-                                .setVariable("y", i);
-                        v = (float) e.evaluate();
-                        if (minimumV >= v) {
-                            minimumV = v;
-                            optXY[0] = i;
-                            optXY[1] = a;
-                            rashod = minimumV * 100;
-                            resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+            //перебор, scan - шаг
+            float minimumV = 0;
+            if (isUp) {
+                for (float i = xMin; i <= xMax; i = i + scan) {
+                    for (float a = yMax; a >= yMin; a = a - scan) {
+                        if (parX * i + parY * a <= parAns) {
+                            isTrue = true;
+                            Expression e = new ExpressionBuilder(task.getFunc())
+                                    .variables("x", "y")
+                                    .build()
+                                    .setVariable("x", a)
+                                    .setVariable("y", i);
+                            v = (float) e.evaluate();
+                            if (minimumV <= v) {
+                                minimumV = v;
+                                optXY[0] = i;
+                                optXY[1] = a;
+                                rashod = minimumV * coef;
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (float i = xMin; i <= xMax; i = i + scan) {
+                    for (float a = yMax; a >= yMin; a = a - scan) {
+                        if (parX * i + parY * a >= parAns) {
+                            isTrue = true;
+                            Expression e = new ExpressionBuilder(task.getFunc())
+                                    .variables("x", "y")
+                                    .build()
+                                    .setVariable("x", a)
+                                    .setVariable("y", i);
+                            v = (float) e.evaluate();
+                            if (minimumV <= v) {
+                                minimumV = v;
+                                optXY[0] = i;
+                                optXY[1] = a;
+                                rashod = minimumV * coef;
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                            }
                         }
                     }
                 }
@@ -317,20 +364,20 @@ public class MainController {
     }
 
     private boolean isTrueArea(double xMin, double xMax, double yMin, double yMax, double parX, double parY, double parAns, boolean isUp) {
-        if(!isUp){
+        if (!isUp) {
             return parAns <= xMax * parX + yMax * parY || parAns <= xMin * parX + yMax * parY;
         } else {
             return parAns >= xMax * parX + yMin * parY || parAns >= xMin * parX + yMin * parY;
         }
     }
 
-    private void addingsArrays(){
+    private void addingsArrays() {
         methodsArray.add("Метод полного перебора");
     }
 
     public void onClickChooseTask(ActionEvent actionEvent) {
         boolean isChoose = main.showTaskDialog();
-        if(isChoose){
+        if (isChoose) {
             xMinField.setText(String.valueOf(task.getxFrom()));
             xMaxField.setText(String.valueOf(task.getxTo()));
             yMinField.setText(String.valueOf(task.getyFrom()));
@@ -339,7 +386,7 @@ public class MainController {
             paramY.setText(String.valueOf(task.getyParam()));
             paramAnswer.setText(String.valueOf(task.getAnswerParam()));
             scanField.setText("1");
-            if(task.isUp()){
+            if (task.isUp()) {
                 isUpLabel.setText("≤");
             } else {
                 isUpLabel.setText("≥");
