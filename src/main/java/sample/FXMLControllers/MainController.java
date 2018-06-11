@@ -238,7 +238,7 @@ public class MainController {
                         stylePlotNode.setStyle("-fx-background-color: transparent;");
 
                         anchor2dPane.getChildren().add(imageView2d);
-                        imageView2d.setX(36);
+                        imageView2d.setX(38);
                         imageView2d.setY(16);
                         imageView2d.setFitHeight(345);
                         imageView2d.setFitWidth(350);
