@@ -39,6 +39,7 @@ import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MainController {
 
@@ -93,6 +94,10 @@ public class MainController {
     public void initialize() {
         addingsArrays();
         methodBox.setItems(methodsArray);
+        Pattern p = Pattern.compile("(\\d+\\.?\\d*)?");
+        scanField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!p.matcher(newValue).matches()) scanField.setText(oldValue);
+        });
     }
 
     //очистка полей
@@ -178,10 +183,10 @@ public class MainController {
 
         try {
             isTrue = false;
-            float xMin = Float.parseFloat(xMinField.getText());
-            float xMax = Float.parseFloat(xMaxField.getText());
-            float yMin = Float.parseFloat(yMinField.getText());
-            float yMax = Float.parseFloat(yMaxField.getText());
+            float xMin = Float.parseFloat(xMinField.getText().replace(",", "."));
+            float xMax = Float.parseFloat(xMaxField.getText().replace(",", "."));
+            float yMin = Float.parseFloat(yMinField.getText().replace(",", "."));
+            float yMax = Float.parseFloat(yMaxField.getText().replace(",", "."));
             float scan = Float.parseFloat(scanField.getText());
             float parX = Float.parseFloat(paramX.getText());
             float parY = Float.parseFloat(paramY.getText());
