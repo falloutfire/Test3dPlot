@@ -43,6 +43,10 @@ public class TaskLayoutController {
         tasks.add(new Task(true, "Расчет минимальных\nзатрат на очистку", "sample/Entities/Task2/full.txt",
                 "sample/Entities/Task2/formal.txt", "Минимальные затраты на очистку\nреакционной массы равны ", " у.е. \nи достигаются при температурах хладогента в\nтеплообменных устройствах реактора\nравных ",
                 -3, 3, -3, 6, -1, 1, 1, "2000*((x-y)^2 + (1-y)^2)", 100, false, " градусов Цельсия"));
+        tasks.add(new Task(false, "Расчет минимальных\n", "sample/Entities/Task2/full.txt",
+                "sample/Entities/Task2/formal.txt", "Минимальные затраты на очистку\nреакционной массы равны ", " у.е. \nи достигаются при температурах хладогента в\nтеплообменных устройствах реактора\nравных ",
+                -3, 0, -0.5f, 3, -1, 1, 3, "(x - y) * cos(3.14 * sqrt(x^2 + y^2))", 8, true, " градусов Цельсия"));
+
     }
 
     public void onClickChoose(ActionEvent actionEvent) {

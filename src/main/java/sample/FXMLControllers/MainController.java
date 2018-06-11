@@ -37,6 +37,7 @@ import sample.Main;
 
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class MainController {
@@ -226,7 +227,8 @@ public class MainController {
                                 "-fx-stroke-width: 3px;" +
                                 "-fx-effect: null;");
                         Node lineAnswer = seriesAnswer.getNode().lookup(".chart-series-line");
-                        lineAnswer.setStyle("-fx-stroke-width: 9px;");
+                        lineAnswer.setStyle("-fx-stroke: #03c40c;" +
+                                "-fx-stroke-width: 9px;");
                         Node stylePlotNode = chart2dLine.lookup(".chart-plot-background");
                         stylePlotNode.setStyle("-fx-background-color: transparent;");
 
@@ -252,7 +254,7 @@ public class MainController {
                     }
                 } else {
                     main.getAlert("Неверно введены значения", "Проверьте все ячейки на наличие ошибок!\n" +
-                            "Ограничения должны лежать в пределах от -10 до 10\n");
+                            "Ограничения должны лежать в пределах от -10 до 10\nШаг должен быть больше 0.01");
                 }
             } else {
                 main.getAlert("Не выбран метод расчета решения", "Выберете метод расчета решения задачи!");
@@ -260,6 +262,7 @@ public class MainController {
 
         } catch (NumberFormatException e) {
             main.getAlert("Неправильный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
+            throw e;
         }
     }
 
@@ -267,47 +270,50 @@ public class MainController {
     private float[] optim(boolean isMin, float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp, float coef) {
         float v, rashod;
         float[] optXY = new float[2];
+        DecimalFormat df = new DecimalFormat("#.0");
         if (isMin) {
             float minimumV = Float.MAX_VALUE;
             //перебор, scan - шаг
             if (isUp) {
                 for (float i = xMin; i <= xMax; i = i + scan) {
-                    for (float a = yMax; a >= yMin; a = a - scan) {
+                    for (float a = yMin; a <= yMax; a = a + scan) {
                         if (parX * i + parY * a <= parAns) {
                             isTrue = true;
                             Expression e = new ExpressionBuilder(task.getFunc())
                                     .variables("x", "y")
                                     .build()
-                                    .setVariable("x", a)
-                                    .setVariable("y", i);
+                                    .setVariable("x", i)
+                                    .setVariable("y", a);
                             v = (float) e.evaluate();
                             if (minimumV >= v) {
                                 minimumV = v;
                                 optXY[0] = i;
                                 optXY[1] = a;
                                 rashod = minimumV * coef;
-                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() +
+                                        Float.valueOf(df.format(optXY[0]).replace(",", ".")) + " и " + Float.valueOf(df.format(optXY[1]).replace(",", ".")) + task.getVariables());
                             }
                         }
                     }
                 }
             } else {
                 for (float i = xMin; i <= xMax; i = i + scan) {
-                    for (float a = yMax; a >= yMin; a = a - scan) {
+                    for (float a = yMin; a <= yMax; a = a + scan) {
                         if (parX * i + parY * a >= parAns) {
                             isTrue = true;
                             Expression e = new ExpressionBuilder(task.getFunc())
                                     .variables("x", "y")
                                     .build()
-                                    .setVariable("x", a)
-                                    .setVariable("y", i);
+                                    .setVariable("x", i)
+                                    .setVariable("y", a);
                             v = (float) e.evaluate();
                             if (minimumV >= v) {
                                 minimumV = v;
                                 optXY[0] = i;
                                 optXY[1] = a;
                                 rashod = minimumV * coef;
-                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() +
+                                        Float.valueOf(df.format(optXY[0]).replace(",", ".")) + " и " + Float.valueOf(df.format(optXY[1]).replace(",", ".")) + task.getVariables());
                             }
                         }
                     }
@@ -318,42 +324,44 @@ public class MainController {
             float minimumV = 0;
             if (isUp) {
                 for (float i = xMin; i <= xMax; i = i + scan) {
-                    for (float a = yMax; a >= yMin; a = a - scan) {
+                    for (float a = yMin; a <= yMax; a = a + scan) {
                         if (parX * i + parY * a <= parAns) {
                             isTrue = true;
                             Expression e = new ExpressionBuilder(task.getFunc())
                                     .variables("x", "y")
                                     .build()
-                                    .setVariable("x", a)
-                                    .setVariable("y", i);
+                                    .setVariable("x", i)
+                                    .setVariable("y", a);
                             v = (float) e.evaluate();
-                            if (minimumV <= v) {
+                            if (minimumV < v) {
                                 minimumV = v;
                                 optXY[0] = i;
                                 optXY[1] = a;
                                 rashod = minimumV * coef;
-                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() +
+                                        Float.valueOf(df.format(optXY[0]).replace(",", ".")) + " и " + Float.valueOf(df.format(optXY[1]).replace(",", ".")) + task.getVariables());
                             }
                         }
                     }
                 }
             } else {
                 for (float i = xMin; i <= xMax; i = i + scan) {
-                    for (float a = yMax; a >= yMin; a = a - scan) {
+                    for (float a = yMin; a <= yMax; a = a + scan) {
                         if (parX * i + parY * a >= parAns) {
                             isTrue = true;
                             Expression e = new ExpressionBuilder(task.getFunc())
                                     .variables("x", "y")
                                     .build()
-                                    .setVariable("x", a)
-                                    .setVariable("y", i);
+                                    .setVariable("x", i)
+                                    .setVariable("y", a);
                             v = (float) e.evaluate();
-                            if (minimumV <= v) {
+                            if (minimumV < v) {
                                 minimumV = v;
                                 optXY[0] = i;
                                 optXY[1] = a;
                                 rashod = minimumV * coef;
-                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() + optXY[0] + " и " + optXY[1] + task.getVariables());
+                                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() +
+                                        Float.valueOf(df.format(optXY[0]).replace(",", ".")) + " и " + Float.valueOf(df.format(optXY[1]).replace(",", ".")) + task.getVariables());
                             }
                         }
                     }
