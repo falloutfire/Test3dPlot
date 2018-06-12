@@ -8,17 +8,13 @@ public class RootLayoutController {
 
     private Main main;
 
-    public void handleClear(ActionEvent actionEvent) {
-        main.getMainController().clearFields();
-    }
-
     public void handleClose(ActionEvent actionEvent) {
         System.exit(0);
     }
 
     public void handleAbout(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Optimizatior");
+        alert.setTitle("Оптимизация");
         alert.setHeaderText("О программе");
         alert.setContentText("Автор: Лихачев Илья\nГруппа 455");
 

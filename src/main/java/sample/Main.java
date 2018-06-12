@@ -3,7 +3,6 @@ package sample;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -24,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Optimizatior");
+        this.primaryStage.setTitle("Оптимизация");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         initRootLayout();
@@ -33,7 +32,7 @@ public class Main extends Application {
 
     }
 
-    private void showLayout() throws IOException {
+    private void showLayout() {
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("View/Main.fxml"));
@@ -50,11 +49,11 @@ public class Main extends Application {
 
     }
 
-    private void initRootLayout() throws IOException {
+    private void initRootLayout() {
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("View/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

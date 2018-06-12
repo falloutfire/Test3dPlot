@@ -53,104 +53,52 @@ public class Task {
         return pathFull;
     }
 
-    public void setPathFull(String pathFull) {
-        this.pathFull = pathFull;
-    }
-
     public String getPathFormal() {
         return pathFormal;
-    }
-
-    public void setPathFormal(String pathFormal) {
-        this.pathFormal = pathFormal;
     }
 
     public String getMinV() {
         return minV;
     }
 
-    public void setMinV(String minV) {
-        this.minV = minV;
-    }
-
     public String getMinOut() {
         return minOut;
-    }
-
-    public void setMinOut(String minOut) {
-        this.minOut = minOut;
     }
 
     public float getxFrom() {
         return xFrom;
     }
 
-    public void setxFrom(float xFrom) {
-        this.xFrom = xFrom;
-    }
-
     public float getxTo() {
         return xTo;
-    }
-
-    public void setxTo(float xTo) {
-        this.xTo = xTo;
     }
 
     public float getyFrom() {
         return yFrom;
     }
 
-    public void setyFrom(float yFrom) {
-        this.yFrom = yFrom;
-    }
-
     public float getyTo() {
         return yTo;
-    }
-
-    public void setyTo(float yTo) {
-        this.yTo = yTo;
     }
 
     public float getxParam() {
         return xParam;
     }
 
-    public void setxParam(float xParam) {
-        this.xParam = xParam;
-    }
-
     public float getyParam() {
         return yParam;
-    }
-
-    public void setyParam(float yParam) {
-        this.yParam = yParam;
     }
 
     public float getAnswerParam() {
         return answerParam;
     }
 
-    public void setAnswerParam(float answerParam) {
-        this.answerParam = answerParam;
-    }
-
     public String getFunc() {
         return func;
     }
 
-    public void setFunc(String func) {
-        this.func = func;
-    }
-
     public float getCoef() {
         return coef;
-    }
-
-    public void setCoef(float coef) {
-        this.coef = coef;
     }
 
     public boolean isUp() {
@@ -165,15 +113,7 @@ public class Task {
         return variables;
     }
 
-    public void setVariables(String variables) {
-        this.variables = variables;
-    }
-
     public boolean isMin() {
         return isMin;
-    }
-
-    public void setMin(boolean min) {
-        isMin = min;
     }
 }
