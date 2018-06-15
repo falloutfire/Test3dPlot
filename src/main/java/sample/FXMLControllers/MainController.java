@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -43,34 +42,20 @@ import java.util.regex.Pattern;
 
 public class MainController {
 
-    @FXML
-    private TextArea resultTextArea;
-    @FXML
-    private Label isUpLabel;
-    @FXML
-    private ComboBox<String> methodBox;
-    @FXML
-    private TextArea mathModelArea;
-    @FXML
-    private TextField paramX;
-    @FXML
-    private TextField paramY;
-    @FXML
-    private TextField paramAnswer;
-    @FXML
-    private AnchorPane Pane3d;
-    @FXML
-    private AnchorPane anchor2dPane;
-    @FXML
-    private TextField xMinField;
-    @FXML
-    private TextField xMaxField;
-    @FXML
-    private TextField yMinField;
-    @FXML
-    private TextField yMaxField;
-    @FXML
-    private TextField scanField;
+    public TextArea resultTextArea;
+    public Label isUpLabel;
+    public ComboBox<String> methodBox;
+    public TextArea mathModelArea;
+    public TextField paramX;
+    public TextField paramY;
+    public TextField paramAnswer;
+    public AnchorPane Pane3d;
+    public AnchorPane anchor2dPane;
+    public TextField xMinField;
+    public TextField xMaxField;
+    public TextField yMinField;
+    public TextField yMaxField;
+    public TextField scanField;
 
     private Main main;
     private Task task;
@@ -100,7 +85,6 @@ public class MainController {
         });
     }
 
-    //очистка полей
     void clearFields() {
         anchor2dPane.getChildren().clear();
         Pane3d.getChildren().clear();
@@ -178,7 +162,6 @@ public class MainController {
         return contour.getFilledContourImage(new DefaultContourColoringPolicy(myColorMapper), 400, 400, 30);
     }
 
-    //обработка нажатия на кнопку "Решение"
     public void onClickStart(ActionEvent actionEvent) {
 
         try {
@@ -193,7 +176,7 @@ public class MainController {
             float parAns = Float.parseFloat(paramAnswer.getText());
 
             if (!(methodBox.getSelectionModel().getSelectedItem() == null)) {
-                if (xMax <= 10 && xMin >= -10 && yMax <= 10 && yMin >= -10 && scan >= 0.1 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns, task.isUp())) {
+                if (xMax <= 100 && xMin >= -100 && yMax <= 100 && yMin >= -100 && scan >= 0.1 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns, task.isUp())) {
                     factory = new JavaFXChartFactory();
                     chart = getChart(factory, xMin, xMax, yMin, yMax, task);
                     imageView = factory.bindImageView(chart);
@@ -208,7 +191,7 @@ public class MainController {
                     NumberAxis xAxis = new NumberAxis(xMin, xMax, 1);
                     NumberAxis yAxis = new NumberAxis(yMin, yMax, 1);
 
-                    LineChart<Number, Number> chart2dLine = new LineChart<Number, Number>(xAxis, yAxis);
+                    LineChart<Number, Number> chart2dLine = new LineChart<>(xAxis, yAxis);
                     XYChart.Series<Number, Number> seriesAnswer = new XYChart.Series<>();
 
                     XYChart.Series<Number, Number> seriesArea = CalculateGraph2d.getOutArea(xMin, xMax, yMin, yMax, parX, parY, parAns, scan, task.isUp());
@@ -219,7 +202,7 @@ public class MainController {
 
                     if (isTrue) {
                         chart2dLine.getData().clear();
-                        seriesAnswer.getData().add(new XYChart.Data<Number, Number>(optXY[0], optXY[1]));
+                        seriesAnswer.getData().add(new XYChart.Data<>(optXY[0], optXY[1]));
 
                         chart2dLine.getData().add(seriesArea);
                         chart2dLine.getData().add(seriesAnswer);
@@ -237,21 +220,37 @@ public class MainController {
                         Node stylePlotNode = chart2dLine.lookup(".chart-plot-background");
                         stylePlotNode.setStyle("-fx-background-color: transparent;");
 
-                        anchor2dPane.getChildren().add(imageView2d);
-                        imageView2d.setX(38);
-                        imageView2d.setY(16);
-                        imageView2d.setFitHeight(345);
-                        imageView2d.setFitWidth(350);
+                        if ((yMinField.getText().length() >= 4 && yMin != Math.round(yMin)) || (yMaxField.getText().length() >= 4 && yMax != Math.round(yMax))) {
+                            anchor2dPane.getChildren().add(imageView2d);
+                            imageView2d.setX(44);
+                            imageView2d.setY(16);
+                            imageView2d.setFitHeight(345);
+                            imageView2d.setFitWidth(342);
 
-                        chart2dLine.setAlternativeRowFillVisible(false);
-                        chart2dLine.setAlternativeColumnFillVisible(false);
+                            chart2dLine.setAlternativeRowFillVisible(false);
+                            chart2dLine.setAlternativeColumnFillVisible(false);
 
-                        chart2dLine.setMaxSize(400, 400);
-                        chart2dLine.setMinSize(400, 400);
+                            chart2dLine.setMaxSize(400, 400);
+                            chart2dLine.setMinSize(400, 400);
 
-                        anchor2dPane.getChildren().add(chart2dLine);
+                            anchor2dPane.getChildren().add(chart2dLine);
+                            Pane3d.getChildren().add(imageView);
+                        } else {
+                            anchor2dPane.getChildren().add(imageView2d);
+                            imageView2d.setX(36);
+                            imageView2d.setY(16);
+                            imageView2d.setFitHeight(345);
+                            imageView2d.setFitWidth(350);
 
-                        Pane3d.getChildren().add(imageView);
+                            chart2dLine.setAlternativeRowFillVisible(false);
+                            chart2dLine.setAlternativeColumnFillVisible(false);
+
+                            chart2dLine.setMaxSize(400, 400);
+                            chart2dLine.setMinSize(400, 400);
+
+                            anchor2dPane.getChildren().add(chart2dLine);
+                            Pane3d.getChildren().add(imageView);
+                        }
                     } else {
                         anchor2dPane.getChildren().clear();
                         Pane3d.getChildren().clear();
@@ -266,19 +265,17 @@ public class MainController {
             }
 
         } catch (NumberFormatException e) {
-            main.getAlert("Неправильный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
+            main.getAlert("Неверный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
             throw e;
         }
     }
 
-    //расчет решения 
     private float[] optim(boolean isMin, float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp, float coef) {
         float v, rashod;
         float[] optXY = new float[2];
         DecimalFormat df = new DecimalFormat("#.0");
         if (isMin) {
             float minimumV = Float.MAX_VALUE;
-            //перебор, scan - шаг
             if (isUp) {
                 for (float i = xMin; i <= xMax; i = i + scan) {
                     for (float a = yMin; a <= yMax; a = a + scan) {

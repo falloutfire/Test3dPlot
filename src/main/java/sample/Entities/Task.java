@@ -8,20 +8,20 @@ public class Task {
     private String pathFormal;
     private String minV;
     private String minOut;
-    private float xFrom;
-    private float xTo;
-    private float yFrom;
-    private float yTo;
-    private float xParam;
-    private float yParam;
-    private float answerParam;
+    private double xFrom;
+    private double xTo;
+    private double yFrom;
+    private double yTo;
+    private double xParam;
+    private double yParam;
+    private double answerParam;
     private String func;
     private float coef;
     private boolean isUp;
     private String variables;
 
-    public Task(boolean isMin, String nameTask, String pathFull, String pathFormal, String minV, String minOut, float xFrom, float xTo,
-                float yFrom, float yTo, float xParam, float yParam, float answerParam, String func, float coef, boolean isUp, String variables) {
+    public Task(boolean isMin, String nameTask, String pathFull, String pathFormal, String minV, String minOut, double xFrom, double xTo,
+                double yFrom, double yTo, double xParam, double yParam, double answerParam, String func, float coef, boolean isUp, String variables) {
         this.isMin = isMin;
         this.nameTask = nameTask;
         this.pathFull = pathFull;
@@ -39,6 +39,10 @@ public class Task {
         this.coef = coef;
         this.isUp = isUp;
         this.variables = variables;
+    }
+
+    public boolean isMin() {
+        return isMin;
     }
 
     public String getNameTask() {
@@ -65,31 +69,31 @@ public class Task {
         return minOut;
     }
 
-    public float getxFrom() {
+    public double getxFrom() {
         return xFrom;
     }
 
-    public float getxTo() {
+    public double getxTo() {
         return xTo;
     }
 
-    public float getyFrom() {
+    public double getyFrom() {
         return yFrom;
     }
 
-    public float getyTo() {
+    public double getyTo() {
         return yTo;
     }
 
-    public float getxParam() {
+    public double getxParam() {
         return xParam;
     }
 
-    public float getyParam() {
+    public double getyParam() {
         return yParam;
     }
 
-    public float getAnswerParam() {
+    public double getAnswerParam() {
         return answerParam;
     }
 
@@ -105,15 +109,7 @@ public class Task {
         return isUp;
     }
 
-    public void setUp(boolean up) {
-        isUp = up;
-    }
-
     public String getVariables() {
         return variables;
-    }
-
-    public boolean isMin() {
-        return isMin;
     }
 }

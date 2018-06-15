@@ -45,8 +45,10 @@ public class TaskLayoutController {
                 -3, 3, -3, 6, -1, 1, 1, "2000*((x-y)^2 + (1-y)^2)", 100, false, " градусов Цельсия"));
         tasks.add(new Task(false, "Расчет максимального\nвыхода фильтрата", "sample/Entities/Task3/full.txt",
                 "sample/Entities/Task3/formal.txt", "Максимальный выход фильтрата\nза смену равен ", " м^3 и достигается \nпри температурах на перегородках Т1 и Т2\nравных ",
-                -3, 0, -0.5f, 3, -1, 1, 3, "(x - y) * cos(3.14 * sqrt(x^2 + y^2))", 8, true, " градусов Цельсия"));
-
+                -3, 0, -0.5, 3, -1, 1, 3, "(x - 1) * cos(3.14 * sqrt(x^2 + y^2))", 8, true, " градусов Цельсия"));
+        tasks.add(new Task(true, "Расчет минимальной\nсебестоимости компонента", "sample/Entities/Task4/full.txt",
+                "sample/Entities/Task4/formal.txt", "Минимальная себестоимость компонента\nравна ", " y.e. и достигается \nпри температурах на змеевике и диффузере Т1 и Т2\nравных ",
+                -18, 7, -8, 8, -1, 1, 2, "1*1*((y-1*1)^2+1*(y-x))", 10, false, " градусов Цельсия"));
     }
 
     public void onClickChoose(ActionEvent actionEvent) {
@@ -72,7 +74,7 @@ public class TaskLayoutController {
     }
 
     public void onClickSelect(MouseEvent mouseEvent) {
-        if (mouseEvent.getClickCount() == 2) {
+        if (mouseEvent.getClickCount() >= 1) {
             String result;
             final InputStream resourceF = this.getClass().getClassLoader().getResourceAsStream(((Task) taskView.getSelectionModel().getSelectedItem()).getPathFull());
             try (Scanner s = new Scanner(resourceF, "UTF-8").useDelimiter("\\A")) {
@@ -80,8 +82,6 @@ public class TaskLayoutController {
             }
             task = (Task) taskView.getSelectionModel().getSelectedItem();
             taskAreaField.setText(result);
-        } else if(mouseEvent.getClickCount() == 1){
-            task = (Task) taskView.getSelectionModel().getSelectedItem();
         }
     }
 
