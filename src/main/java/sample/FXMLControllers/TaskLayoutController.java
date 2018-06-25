@@ -48,7 +48,7 @@ public class TaskLayoutController {
                 -3, 0, -0.5, 3, -1, 1, 3, "(x - 1) * cos(3.14 * sqrt(x^2 + y^2))", 8, true, " градусов Цельсия"));
         tasks.add(new Task(true, "Расчет минимальной\nсебестоимости компонента", "sample/Entities/Task4/full.txt",
                 "sample/Entities/Task4/formal.txt", "Минимальная себестоимость компонента\nравна ", " y.e. и достигается \nпри температурах на змеевике и диффузере Т1 и Т2\nравных ",
-                -18, 7, -8, 8, -1, 1, 2, "1*1*((y-1*1)^2+1*(y-x))", 10, false, " градусов Цельсия"));
+                -18, 7, -8, 8, -1, 1, 2, "e((x+y)^2) +(y-1)^2 +(y-x)", 10, false, " градусов Цельсия"));
     }
 
     public void onClickChoose(ActionEvent actionEvent) {
