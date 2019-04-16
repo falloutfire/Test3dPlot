@@ -106,7 +106,7 @@ public class Main extends Application {
         }
     }
 
-    public void getAlert(String header, String content) {
+    public static void getAlert(String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Ошибка");
         alert.setHeaderText(header);

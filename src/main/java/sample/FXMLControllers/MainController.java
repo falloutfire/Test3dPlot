@@ -37,6 +37,8 @@ import sample.Main;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -56,6 +58,9 @@ public class MainController {
     public TextField yMinField;
     public TextField yMaxField;
     public TextField scanField;
+    public TextField k1Field;
+    public TextField k2Field;
+    public TextField nField;
 
     private Main main;
     private Task task;
@@ -175,7 +180,8 @@ public class MainController {
             float parY = Float.parseFloat(paramY.getText());
             float parAns = Float.parseFloat(paramAnswer.getText());
 
-            if (!(methodBox.getSelectionModel().getSelectedItem() == null)) {
+
+            if (methodBox.getSelectionModel().getSelectedItem() != null) {
                 if (xMax <= 100 && xMin >= -100 && yMax <= 100 && yMin >= -100 && scan >= 0.1 && isTrueArea(xMin, xMax, yMin, yMax, parX, parY, parAns, task.isUp())) {
                     factory = new JavaFXChartFactory();
                     chart = getChart(factory, xMin, xMax, yMin, yMax, task);
@@ -196,9 +202,18 @@ public class MainController {
 
                     XYChart.Series<Number, Number> seriesArea = CalculateGraph2d.getOutArea(xMin, xMax, yMin, yMax, parX, parY, parAns, scan, task.isUp());
 
-                    float[] optXY;
-                    optXY = optim(task.isMin(), xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp(), task.getCoef());
-
+                    float[] optXY = new float[2];
+                    if (methodBox.getSelectionModel().getSelectedItem().equals("Метод полного перебора")) {
+                        optXY = optim(task.isMin(), xMin, xMax, yMin, yMax, scan, parX, parY, parAns, task.isUp(), task.getCoef());
+                    } else if (methodBox.getSelectionModel().getSelectedItem().equals("Метод Бокса")) {
+                        double eps = Double.parseDouble(scanField.getText());
+                        //максимальное количество шагов расчета целевой функции
+                        //и ограниченрий второго рода
+                        int K1 = Integer.parseInt(k1Field.getText());
+                        int K2 = Integer.parseInt(k2Field.getText());
+                        int n = Integer.parseInt(nField.getText());
+                        optXY = calculateBox(xMin, yMin, xMax, yMax, n, K1, K2, parX, parY, parAns, eps, task.isUp());
+                    }
 
                     if (isTrue) {
                         chart2dLine.getData().clear();
@@ -227,14 +242,7 @@ public class MainController {
                             imageView2d.setFitHeight(345);
                             imageView2d.setFitWidth(342);
 
-                            chart2dLine.setAlternativeRowFillVisible(false);
-                            chart2dLine.setAlternativeColumnFillVisible(false);
-
-                            chart2dLine.setMaxSize(400, 400);
-                            chart2dLine.setMinSize(400, 400);
-
-                            anchor2dPane.getChildren().add(chart2dLine);
-                            Pane3d.getChildren().add(imageView);
+                            prepareGraph(chart2dLine);
                         } else {
                             anchor2dPane.getChildren().add(imageView2d);
                             imageView2d.setX(36);
@@ -242,32 +250,36 @@ public class MainController {
                             imageView2d.setFitHeight(345);
                             imageView2d.setFitWidth(350);
 
-                            chart2dLine.setAlternativeRowFillVisible(false);
-                            chart2dLine.setAlternativeColumnFillVisible(false);
-
-                            chart2dLine.setMaxSize(400, 400);
-                            chart2dLine.setMinSize(400, 400);
-
-                            anchor2dPane.getChildren().add(chart2dLine);
-                            Pane3d.getChildren().add(imageView);
+                            prepareGraph(chart2dLine);
                         }
                     } else {
                         anchor2dPane.getChildren().clear();
                         Pane3d.getChildren().clear();
-                        main.getAlert("Ошибка условий ограничения", "Проверьте все ячейки на наличие ошибок!\n");
+                        Main.getAlert("Ошибка условий ограничения", "Проверьте все ячейки на наличие ошибок!\n");
                     }
                 } else {
-                    main.getAlert("Неверно введены значения", "Проверьте все ячейки на наличие ошибок!\n" +
+                    Main.getAlert("Неверно введены значения", "Проверьте все ячейки на наличие ошибок!\n" +
                             "Ограничения должны лежать в пределах от -100 до 100\nШаг должен быть больше 0.01");
                 }
             } else {
-                main.getAlert("Не выбран метод расчета решения", "Выберете метод расчета решения задачи!");
+                Main.getAlert("Не выбран метод расчета решения", "Выберете метод расчета решения задачи!");
             }
 
         } catch (NumberFormatException e) {
-            main.getAlert("Неверный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
+            Main.getAlert("Неверный формат чисел", "Проверьте все ячейки на наличие ошибок!\n");
             throw e;
         }
+    }
+
+    private void prepareGraph(LineChart<Number, Number> chart2dLine) {
+        chart2dLine.setAlternativeRowFillVisible(false);
+        chart2dLine.setAlternativeColumnFillVisible(false);
+
+        chart2dLine.setMaxSize(400, 400);
+        chart2dLine.setMinSize(400, 400);
+
+        anchor2dPane.getChildren().add(chart2dLine);
+        Pane3d.getChildren().add(imageView);
     }
 
     private float[] optim(boolean isMin, float xMin, float xMax, float yMin, float yMax, float scan, float parX, float parY, float parAns, boolean isUp, float coef) {
@@ -383,6 +395,7 @@ public class MainController {
 
     private void addingsArrays() {
         methodsArray.add("Метод полного перебора");
+        methodsArray.add("Метод Бокса");
     }
 
     public void onClickChooseTask(ActionEvent actionEvent) {
@@ -414,4 +427,280 @@ public class MainController {
     void setTask(Task task) {
         this.task = task;
     }
+
+    Result Goal_func(Variable var, Task task) {
+        Result res = new Result();
+        Expression e = new ExpressionBuilder(task.getFunc())
+                .variables("x", "y")
+                .build()
+                .setVariable("x", var.v1)
+                .setVariable("y", var.v2);
+        res.z = (float) e.evaluate();
+        return res;
+    }
+
+
+    public void onClickClalcBox(ActionEvent actionEvent) {
+    }
+
+    private float[] calculateBox(double g1, double g2, double h1, double h2, int n, int K1, int K2, float parX, float parY, float parAns, double eps, boolean isMax) {
+        float[] optXY = new float[2];
+
+        //рассчитываем количество вершин комплекса
+        int N;
+        if (n <= 5) N = 2 * n;
+        else N = n + 1;
+
+        //обнуляем счетчики шагов
+        int k1, k2;
+        k1 = 0;
+        k2 = 0;
+
+        ArrayList<Variable> fix = new ArrayList<>();
+        ArrayList<Variable> non_fix = new ArrayList<>();
+
+        Res_of_dir ogr2;
+        int t, f;
+        t = f = 0;
+
+        ArrayList<Variable> arr_var = new ArrayList<>();
+        Random r = new Random();
+
+        while (t == 0 && k2 < K2) {
+            for (int i = 0; i < N; ++i) {
+                arr_var.add(new Variable(g1 + (r.nextInt(10)) * (h1 - g1) / 10, g2 + (r.nextInt(10)) * (h2 - g2) / 10));
+            }
+
+            //проверка ограничений второго рода в каждой вершине комплекса
+            for (int i = 0; i < N; ++i) {
+                ogr2 = Dir(arr_var.get(i), parX, parY, parAns, isMax);
+                if (ogr2.ogr) {
+                    fix.add(t, arr_var.get(i));
+                    t = t + 1;
+                } else {
+                    non_fix.add(arr_var.get(i));
+                    f = f + 1;
+                }
+            }
+
+            if (t == 0) {
+                k2 = k2 + 1;
+                f = 0;
+            }
+        }
+
+        if (k2 == K2) {
+            Main.getAlert("Ошибка!", "Превышено количество шагов расчета ограничений второго рода!\nУвеличьте это значение!");
+            return null;
+        }
+
+        // подтягиваем незафиксированные вершины, пока не зафиксируем все
+        // вершины комплекса
+        Variable sum = new Variable();
+        sum.v1 = sum.v2 = 0;
+
+        ArrayList<Variable> jump = new ArrayList<>();
+        Res_of_dir ogr22;
+        k2 = 0;
+
+        for (int i = 0; i < f && k2 < K2; i++) {
+            sum.v1 = sum.v2 = 0;
+
+            for (int j = 0; j < t; j++) {
+                sum.v1 = sum.v1 + fix.get(j).v1;
+                sum.v2 = sum.v2 + fix.get(j).v2;
+            }
+            jump.add(new Variable(0.5 * (non_fix.get(i).v1 + sum.v1 / t), 0.5 * (non_fix.get(i).v2 + sum.v2 / t)));
+            ogr22 = Dir(jump.get(i), parX, parY, parAns, isMax);
+
+            if (ogr22.ogr) {
+                fix.add(t, jump.get(i));
+                t = t + 1;
+            } else {
+                non_fix.get(i).v1 = jump.get(i).v1;
+                non_fix.get(i).v2 = jump.get(i).v2;
+                i = i - 1;
+                k2 = k2 + 1;
+            }
+        }
+
+        if (k2 == K2) {
+            Main.getAlert("Ошибка!", "Превышено количество шагов расчета ограничений второго рода!\nУвеличьте это значение!");
+            return null;
+        }
+
+        Result[] goal = new Result[N];
+
+        for (int i = 0; i < fix.size(); i++) {
+            goal[i] = Goal_func(fix.get(i), task);
+        }
+
+        //выбираем максимальное и минимальное значение целевой функции
+        double max, min;
+
+        while (k1 < K1) {
+            int min_i = 0;
+            int max_i = 0;
+            max = goal[0].z;
+
+            for (int j = 0; j < fix.size(); j++) {
+                if (max < goal[j].z) {
+                    max = goal[j].z;
+                    max_i = j;
+                }
+            }
+
+            min = goal[0].z;
+            for (int j = 0; j < fix.size(); j++) {
+                if (min > goal[j].z) {
+                    min = goal[j].z;
+                    min_i = j;
+                }
+            }
+
+            int good_index = 0, bad_index = 0;
+            double good_func, bad_func;
+
+            //если тип экстремума - минимум, то наилучшим будет миним.
+            //значение целевой функции
+            //TODO
+            if (isMax) {
+                bad_index = max_i;
+                good_index = min_i;
+            } else {
+
+                bad_index = min_i;
+                good_index = max_i;
+            }
+
+
+            good_func = goal[good_index].z;
+            bad_func = goal[bad_index].z;
+
+            // рассчитываем координаты центра комплекса с отброшенной наихудшей вершиной
+            sum.v1 = sum.v2 = 0;
+
+            //for (int i = 0; i < N; ++i) {
+            for (int i = 0; i < fix.size(); i++) {
+                sum.v1 = sum.v1 + fix.get(i).v1;
+                sum.v2 = sum.v2 + fix.get(i).v2;
+            }
+
+            Variable center = new Variable();
+
+            center.v1 = (sum.v1 - fix.get(bad_index).v1) / (N - 1);
+            center.v2 = (sum.v2 - fix.get(bad_index).v2) / (N - 1);
+
+            // проверяем условие останова
+            double B;
+            B = (Math.abs(center.v1 - fix.get(bad_index).v1) + Math.abs(center.v1 - fix.get(good_index).v1) +
+                    Math.abs(center.v2 - fix.get(bad_index).v2) + Math.abs(center.v2 - fix.get(good_index).v2)) / (2 * n);
+            k1 = k1 + 1;
+
+            //если условие останова выполняется, выводим результат
+            if (B < eps) {
+                isTrue = true;
+                /*minimumV = v;
+                optXY[0] = i;
+                optXY[1] = a;*/
+                double rashod = good_func * task.getCoef();
+                DecimalFormat df = new DecimalFormat("#.0");
+                resultTextArea.setText(task.getMinV() + String.format("%.0f", rashod) + task.getMinOut() +
+                        Float.valueOf(df.format(fix.get(good_index).v1).replace(",", ".")) + " и " + Float.valueOf(df.format(fix.get(good_index).v2).replace(",", ".")) + task.getVariables());
+
+                /*tbFunc.Text = Math.Round(good_func, 3).ToString();
+                tbvar1.Text = Math.Round(fix[good_index].v1, 3).ToString();
+                tbvar2.Text = Math.Round(fix[good_index].v2, 3).ToString();
+                tbAbrid.Text = Math.Round(direction.res, 3).ToString();
+                tbStep.Text = k1.ToString();*/
+                optXY[0] = (float) fix.get(good_index).v1;
+                optXY[1] = (float) fix.get(good_index).v2;
+                return optXY;
+            }
+            //иначе продолжаем расчет
+            //взамен наихудшей вершины рассчитываем координаты новой
+            Variable new_var = new Variable();
+            new_var.v1 = 2.3 * center.v1 - 1.3 * fix.get(bad_index).v1;
+            new_var.v2 = 2.3 * center.v2 - 1.3 * fix.get(bad_index).v2;
+
+            // проверяем ограничения первого рода
+            while (new_var.v1 < g1) new_var.v1 = g1 + 1;
+            while (new_var.v1 > h1) new_var.v1 = h1 - 1;
+
+            while (new_var.v2 < g2) new_var.v2 = g2 + 1;
+            while (new_var.v2 > h2) new_var.v2 = h2 - 1;
+
+            //проверяем ограничения второго рода
+            Res_of_dir ogr222;
+            ogr222 = Dir(new_var, parX, parY, parAns, isMax);
+
+            Result new_res;
+            k2 = 0;
+
+            while (k2 > K2) {
+                if (ogr222.ogr) break;
+                else {
+                    new_var.v1 = (new_var.v1 + center.v1) / 2;
+                    new_var.v2 = (new_var.v2 + center.v2) / 2;
+                    ogr222 = Dir(new_var, parX, parY, parAns, isMax);
+                    k2++;
+                }
+            }
+
+            new_res = Goal_func(new_var, task);
+            while (new_res.z > bad_func) {
+                new_var.v1 = (new_var.v1 + fix.get(good_index).v1) / 2;
+                new_var.v2 = (new_var.v2 + fix.get(good_index).v2) / 2;
+                new_res = Goal_func(new_var, task);
+            }
+
+            fix.set(bad_index, new_var);
+            goal[bad_index] = new_res;
+        }
+        Main.getAlert("Превышено количество шагов расчета целевой функции!", "Увеличьте это значение или погрешность расчета целевой функции!");
+        return null;
+    }
+
+
+    private Res_of_dir Dir(Variable var, double parX, double parY, double parAns, boolean isMax) {
+        Res_of_dir dir = new Res_of_dir();
+        dir.res = parX * var.v1 + parY * var.v2;
+        if (isMax) {
+            dir.ogr = dir.res < parAns;
+        } else {
+            dir.ogr = dir.res > parAns;
+        }
+
+        return dir;
+    }
+}
+
+class Variable {
+    public double v1;
+    public double v2;
+
+    public Variable(double v1, double v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
+
+    public Variable() {
+    }
+}
+
+class Res_of_dir {
+    public double res;
+    public boolean ogr;
+
+    public Res_of_dir(double res, boolean ogr) {
+        this.res = res;
+        this.ogr = ogr;
+    }
+
+    public Res_of_dir() {
+    }
+}
+
+class Result {
+    public double z;
 }

@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="560.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8"
-            fx:controller="sample.FXMLControllers.MainController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="650.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="sample.FXMLControllers.MainController">
     <SplitPane dividerPositions="0.4" layoutX="5.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0"
                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                AnchorPane.topAnchor="0.0">
@@ -11,29 +11,36 @@
             <ComboBox fx:id="methodBox" layoutX="150.0" layoutY="14.0" prefHeight="25.0" prefWidth="124.0"
                       promptText="Выбор метода"/>
             <Label layoutX="16.0" layoutY="49.0" text="Уравнение системы:"/>
-            <TextArea fx:id="mathModelArea" editable="false" layoutX="14.0" layoutY="66.0" prefHeight="153.0"
+            <TextArea fx:id="mathModelArea" editable="false" layoutX="14.0" layoutY="66.0" prefHeight="91.0"
                       prefWidth="289.0"/>
-            <Label layoutX="23.0" layoutY="226.0" text="Ограничения:"/>
-            <Label layoutX="70.0" layoutY="251.0" text="&lt; X &lt;"/>
-            <Label layoutX="70.0" layoutY="284.0" text="&lt; Y &lt;"/>
-            <TextField layoutX="22.0" layoutY="247.0" prefHeight="25.0" prefWidth="40.0" fx:id="xMinField"/>
-            <TextField layoutX="118.0" layoutY="247.0" prefHeight="25.0" prefWidth="40.0" fx:id="xMaxField"/>
-            <TextField fx:id="yMinField" layoutX="22.0" layoutY="280.0" prefHeight="25.0" prefWidth="40.0"/>
-            <TextField fx:id="yMaxField" layoutX="118.0" layoutY="280.0" prefHeight="25.0" prefWidth="40.0"/>
-            <TextField fx:id="paramX" layoutX="22.0" layoutY="315.0" prefHeight="25.0" prefWidth="40.0"/>
-            <TextField fx:id="paramY" layoutX="118.0" layoutY="315.0" prefHeight="25.0" prefWidth="40.0"/>
-            <TextField fx:id="paramAnswer" layoutX="209.0" layoutY="315.0" prefHeight="25.0" prefWidth="40.0"/>
-            <TextField fx:id="scanField" layoutX="124.0" layoutY="363.0" prefHeight="25.0" prefWidth="46.0"/>
-            <Label layoutX="14.0" layoutY="367.0" text="Шаг сканирования:"/>
-            <Button layoutX="214.0" layoutY="524.0" mnemonicParsing="false" onAction="#onClickStart"
-                    prefHeight="25.0" prefWidth="87.0" text="Решить"/>
-            <Label layoutX="71.0" layoutY="319.0" text="⋅X  + "/>
-            <Label layoutX="171.0" layoutY="319.0" text="⋅Y"/>
+            <Label layoutX="15.0" layoutY="165.0" text="Ограничения:"/>
+            <Label layoutX="62.0" layoutY="190.0" text="&lt; X &lt;"/>
+            <Label layoutX="62.0" layoutY="223.0" text="&lt; Y &lt;"/>
+            <TextField layoutX="14.0" layoutY="186.0" prefHeight="25.0" prefWidth="40.0" fx:id="xMinField"/>
+            <TextField layoutX="110.0" layoutY="186.0" prefHeight="25.0" prefWidth="40.0" fx:id="xMaxField"/>
+            <TextField fx:id="yMinField" layoutX="14.0" layoutY="219.0" prefHeight="25.0" prefWidth="40.0"/>
+            <TextField fx:id="yMaxField" layoutX="110.0" layoutY="219.0" prefHeight="25.0" prefWidth="40.0"/>
+            <TextField fx:id="paramX" layoutX="14.0" layoutY="254.0" prefHeight="25.0" prefWidth="40.0"/>
+            <TextField fx:id="paramY" layoutX="110.0" layoutY="254.0" prefHeight="25.0" prefWidth="40.0"/>
+            <TextField fx:id="paramAnswer" layoutX="201.0" layoutY="254.0" prefHeight="25.0" prefWidth="40.0"/>
+            <TextField fx:id="scanField" layoutX="136.0" layoutY="469.0" prefHeight="25.0" prefWidth="46.0"/>
+            <Label layoutX="14.0" layoutY="474.0" text="Сканирование"/>
+            <Button layoutX="214.0" layoutY="602.0" mnemonicParsing="false" onAction="#onClickStart" prefHeight="25.0"
+                    prefWidth="87.0" text="Решить"/>
+            <Label layoutX="63.0" layoutY="259.0" text="⋅X  + "/>
+            <Label layoutX="159.0" layoutY="259.0" text="⋅Y"/>
             <Button layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickChooseTask"
                     prefHeight="25.0" prefWidth="112.0" text="Выбор задачи"/>
-            <Label fx:id="isUpLabel" layoutX="193.0" layoutY="319.0" text="&gt;"/>
-            <TextArea fx:id="resultTextArea" editable="false" layoutX="14.0" layoutY="399.0" prefHeight="116.0"
+            <Label fx:id="isUpLabel" layoutX="178.0" layoutY="259.0" text="&gt;"/>
+            <TextArea fx:id="resultTextArea" editable="false" layoutX="14.0" layoutY="502.0" prefHeight="91.0"
                       prefWidth="289.0"/>
+            <TextField fx:id="k1Field" layoutX="201.0" layoutY="315.0" prefHeight="25.0" prefWidth="83.0" text="100"/>
+            <TextField fx:id="k2Field" layoutX="200.0" layoutY="363.0" prefHeight="25.0" prefWidth="83.0" text="100"/>
+            <TextField fx:id="nField" layoutX="200.0" layoutY="406.0" prefHeight="25.0" prefWidth="83.0" text="2"/>
+            <Label layoutX="18.0" layoutY="312.0" text="Максимальное кол-во &#10;шагов расчета"/>
+            <Label layoutX="18.0" layoutY="352.0"
+                   text="Максимальное кол-во &#10;шагов расчета ограничений &#10;ворого рода"/>
+            <Label layoutX="18.0" layoutY="403.0" text="Кол-во независимых &#10;переменных"/>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <TabPane prefHeight="398.0" prefWidth="417.0" styleClass="background" tabClosingPolicy="UNAVAILABLE"
@@ -46,8 +53,8 @@
                     </content>
                 </Tab>
                 <Tab text="3D График">
-                    <AnchorPane fx:id="Pane3d" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                prefWidth="200.0" styleClass="background"/>
+                    <AnchorPane fx:id="Pane3d" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+                                styleClass="background"/>
                 </Tab>
             </TabPane>
         </AnchorPane>

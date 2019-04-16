@@ -45,10 +45,10 @@
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.fxm</include>
-                    <include>**/*.cs</include>
-                    <include>**/*.pn</include>
-                    <include>**/*.tnt</include>
+                    <include>**/*.fxml</include>
+                    <include>**/*.css</include>
+                    <include>**/*.png</include>
+                    <include>**/*.txt</include>
                 </includes>
             </resource>
         </resources>
